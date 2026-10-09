@@ -7,7 +7,7 @@ const TZID = 'Asia/Jakarta';
 const DEFAULT_EMPLOYEES = { defaultScheme: 'regular', timezone: TZID, employees: [] };
 
 export function isIsoDate(value) {
-  if (typeof value !== 'string' || !/^\\d{4}-\\d{2}-\\d{2}$/.test(value)) return false;
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const d = new Date(`${value}T00:00:00.000Z`);
   return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === value;
 }
@@ -20,7 +20,7 @@ function readJson(file, fallback = null) { try { return JSON.parse(fs.readFileSy
 export function loadHolidayData(rootDir = ROOT) {
   const dir = path.join(rootDir, 'data', 'holidays');
   assert(fs.existsSync(dir), 'Holiday cache directory is missing; refusing to generate feeds.');
-  const files = fs.readdirSync(dir).filter(file => /^\\d{4}\\.json$/.test(file)).sort();
+  const files = fs.readdirSync(dir).filter(file => /^\d{4}\.json$/.test(file)).sort();
   assert(files.length > 0, 'No verified holiday cache files found; refusing to assume zero holidays.');
   const years = new Map();
   const holidays = new Map();
@@ -182,7 +182,7 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
     annualFeeds.push({ year, file: combined, events: annual.length });
   }
   for (const filename of fs.readdirSync(outputDir)) {
-    const match = filename.match(/^(.*-)?(\\d{4})\\.ics$/);
+    const match = filename.match(/^(.*-)?(\d{4})\.ics$/);
     if (match && (Number(match[2]) < firstYear || Number(match[2]) > lastYear)) fs.rmSync(path.join(outputDir, filename), { force: true });
   }
   const status = readJson(path.join(rootDir, 'data', 'holidays', 'sync-status.json'), {});
