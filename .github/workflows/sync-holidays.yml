@@ -2,6 +2,16 @@ name: Sync holiday cache
 
 on:
   workflow_dispatch:
+    inputs:
+      year:
+        description: Optional year to sync (must be published by the API)
+        required: false
+        type: string
+      force:
+        description: Re-fetch already cached years
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: '0 6 * * 1'
 
@@ -23,18 +33,36 @@ jobs:
 
       - name: Sync holiday cache
         id: sync
-        run: node scripts/sync-holidays.mjs
+        run: |
+          args=()
+          if [ -n "${{ inputs.year }}" ]; then args+=("--year=${{ inputs.year }}"); fi
+          if [ "${{ inputs.force }}" = "true" ]; then args+=("--force"); fi
+          node scripts/sync-holidays.mjs "${args[@]}"
 
-      - name: Commit updated holiday data
+      - name: Regenerate ICS feeds
         if: ${{ success() }}
+        run: node scripts/generate-ics.mjs
+
+      - name: Commit updated holiday data and feeds
+        if: ${{ always() }}
+        env:
+          JOB_STATUS: ${{ job.status }}
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/holidays
+          git add data/holidays public/ics
           if ! git diff --cached --quiet; then
-            git commit -m "chore(holidays): sync $(date -u +%Y) data"
+            year="${{ inputs.year }}"
+            [ -n "$year" ] || year="$(date -u +%Y)"
+            git commit -m "chore(holidays): sync $year data"
             git push
           fi
+
+      - name: Ensure failure label exists
+        if: ${{ failure() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh label create holiday-sync-failure --color D73A4A --description "Holiday data sync or validation failed" --force
 
       - name: Report failure to GitHub Issues
         if: ${{ failure() }}
@@ -42,9 +70,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           title="holiday-sync-failure: $(date -u +%Y-%m-%d)"
-          body="The scheduled holiday sync failed. Review the workflow logs and the cached holiday data before publishing new calendar coverage."
-          if ! gh issue list --limit 20 --search "$title" --json number --jq '.[].number' | grep -q .; then
-            gh issue create --title "$title" --body "$body" --label "holiday-sync-failure"
+          body="The scheduled/manual holiday sync or calendar generation failed. Review the workflow logs and data/holidays/sync-status.json. Existing last-known-good cache must remain the publication boundary."
+          existing="$(gh issue list --state open --label holiday-sync-failure --limit 50 --json number,title --jq '.[] | select(.title | startswith("holiday-sync-failure:")) | .number' | head -n 1)"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body" --label holiday-sync-failure
           fi
 
       - name: Upload sync status
@@ -53,3 +84,4 @@ jobs:
         with:
           name: holiday-sync-status
           path: data/holidays/sync-status.json
+          if-no-files-found: warn
