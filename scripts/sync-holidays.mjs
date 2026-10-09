@@ -7,7 +7,7 @@ const DEFAULT_BASE_URL = 'https://tanggalmerah.upset.dev';
 const VALID_TYPES = new Set(['national', 'collective_leave']);
 
 export function isIsoDate(value) {
-  if (typeof value !== 'string' || !/^\\d{4}-\\d{2}-\\d{2}$/.test(value)) return false;
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const date = new Date(`${value}T00:00:00.000Z`);
   return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
@@ -73,7 +73,7 @@ async function fetchJson(url, { timeoutMs = 12000, retries = 3, fetchImpl = fetc
 }
 
 export async function discoverAvailableYears(baseUrl = DEFAULT_BASE_URL, options = {}) {
-  const payload = await fetchJson(`${baseUrl.replace(/\\/+$/, '')}/api/years`, options);
+  const payload = await fetchJson(baseUrl.replace(/\/+$/, '') + '/api/years', options);
   const raw = Array.isArray(payload) ? payload : Array.isArray(payload?.data) ? payload.data : Array.isArray(payload?.years) ? payload.years : null;
   if (!raw) throw new Error('/api/years response has no year array.');
   const years = raw.map(value => Number(typeof value === 'object' ? value.year : value));
@@ -89,7 +89,7 @@ function applyOverrides(holidays, overrides, year) {
     if (!item || !isIsoDate(item.date) || Number(item.date.slice(0, 4)) !== year) continue;
     const required = ['name', 'sourceUrl', 'reason', 'verifiedBy', 'verifiedAt'];
     if (required.some(key => typeof item[key] !== 'string' || !item[key].trim())) throw new Error(`Override ${item.date} is missing required provenance fields.`);
-    if (!/^https:\\/\\//i.test(item.sourceUrl)) throw new Error(`Override ${item.date} sourceUrl must be HTTPS.`);
+    if (!/^https:\/\//i.test(item.sourceUrl)) throw new Error('Override ' + item.date + ' sourceUrl must be HTTPS.');
     if (!isIsoDate(item.date) || !Number.isFinite(Date.parse(item.verifiedAt))) throw new Error(`Override ${item.date} has invalid date metadata.`);
     const type = normalizeHolidayType(item.type);
     if (!type) throw new Error(`Override ${item.date} has invalid type.`);
@@ -134,7 +134,7 @@ export async function syncHolidays(options = {}) {
           validateHolidayPayload({ year, holidays: existing.holidays }, year);
           continue;
         }
-        const url = `${baseUrl.replace(/\\/+$/, '')}/api/holidays?year=${year}`;
+        const url = baseUrl.replace(/\/+$/, '') + '/api/holidays?year=' + year;
         const payload = await fetchJson(url, options);
         const holidays = applyOverrides(validateHolidayPayload(payload, year), overrides, year);
         const record = { source: url, fetchedAt: now, year, holidays };
@@ -200,7 +200,7 @@ export async function syncHolidays(options = {}) {
 
 if (process.argv[1] && process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
-  const yearArg = args.find(arg => /^--year=\\d{4}$/.test(arg));
+  const yearArg = args.find(arg => /^--year=\d{4}$/.test(arg));
   try {
     const result = await syncHolidays({ dryRun: args.includes('--dry-run'), force: args.includes('--force'), year: yearArg ? Number(yearArg.split('=')[1]) : null });
     if (result.errors.length) process.exitCode = 1;
