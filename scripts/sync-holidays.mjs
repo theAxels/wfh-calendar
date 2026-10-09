@@ -24,12 +24,12 @@ function readJson(file, fallback = null) {
 }
 function writeJson(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\\n`);
+  fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
 }
 function cachedYears(rootDir) {
   const dir = path.join(rootDir, 'data', 'holidays');
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter(f => /^\\d{4}\\.json$/.test(f)).map(f => Number(f.slice(0, 4))).sort((a, b) => a - b);
+  return fs.readdirSync(dir).filter(f => /^\d{4}\.json$/.test(f)).map(f => Number(f.slice(0, 4))).sort((a, b) => a - b);
 }
 
 export function validateHolidayPayload(payload, year) {
