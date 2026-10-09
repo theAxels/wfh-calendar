@@ -9,9 +9,9 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-10-14-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261014T083000
-DTEND;TZID=Asia/Jakarta:20261014T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261014T090000
+DTEND;TZID=Asia/Jakarta:20261014T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -19,9 +19,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-20-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261020T083000
-DTEND;TZID=Asia/Jakarta:20261020T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261020T090000
+DTEND;TZID=Asia/Jakarta:20261020T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -29,9 +29,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261026T083000
-DTEND;TZID=Asia/Jakarta:20261026T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261026T090000
+DTEND;TZID=Asia/Jakarta:20261026T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -39,9 +39,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-30-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261030T083000
-DTEND;TZID=Asia/Jakarta:20261030T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261030T090000
+DTEND;TZID=Asia/Jakarta:20261030T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -49,9 +49,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-05-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261105T083000
-DTEND;TZID=Asia/Jakarta:20261105T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261105T090000
+DTEND;TZID=Asia/Jakarta:20261105T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -59,9 +59,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-11-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261111T083000
-DTEND;TZID=Asia/Jakarta:20261111T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261111T090000
+DTEND;TZID=Asia/Jakarta:20261111T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -69,9 +69,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-17-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261117T083000
-DTEND;TZID=Asia/Jakarta:20261117T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261117T090000
+DTEND;TZID=Asia/Jakarta:20261117T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -79,9 +79,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261123T083000
-DTEND;TZID=Asia/Jakarta:20261123T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261123T090000
+DTEND;TZID=Asia/Jakarta:20261123T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -89,9 +89,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-27-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261127T083000
-DTEND;TZID=Asia/Jakarta:20261127T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261127T090000
+DTEND;TZID=Asia/Jakarta:20261127T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -99,9 +99,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-03-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261203T083000
-DTEND;TZID=Asia/Jakarta:20261203T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261203T090000
+DTEND;TZID=Asia/Jakarta:20261203T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -109,9 +109,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-09-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261209T083000
-DTEND;TZID=Asia/Jakarta:20261209T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261209T090000
+DTEND;TZID=Asia/Jakarta:20261209T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -119,9 +119,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-15-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261215T083000
-DTEND;TZID=Asia/Jakarta:20261215T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261215T090000
+DTEND;TZID=Asia/Jakarta:20261215T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -129,9 +129,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-21-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261221T083000
-DTEND;TZID=Asia/Jakarta:20261221T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261221T090000
+DTEND;TZID=Asia/Jakarta:20261221T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
@@ -139,9 +139,9 @@ CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-29-team-d@wfh-calendar-generator
-DTSTAMP:20261009T172333Z
-DTSTART;TZID=Asia/Jakarta:20261229T083000
-DTEND;TZID=Asia/Jakarta:20261229T173000
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261229T090000
+DTEND;TZID=Asia/Jakarta:20261229T170000
 SUMMARY:Team D — WFH
 DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
  ve leave are skipped using Tanggal Merah API data.
