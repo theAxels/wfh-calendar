@@ -16,8 +16,6 @@ Edit `config/wfh.config.json`, then run `npm run generate`.
   "holidayPolicy": "skip-without-advancing",
   "holidaySource": { "mode": "tanggalmerah-api", "baseUrl": "https://tanggalmerah.upset.dev", "timeoutMs": 10000 },
   "holidays": [],
-  "eventStartTime": "09:00",
-  "eventEndTime": "17:00",
   "description": "Work From Home day."
 }
 ```
