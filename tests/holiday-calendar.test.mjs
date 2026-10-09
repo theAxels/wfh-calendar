@@ -81,11 +81,11 @@ test('Regular scheme has the expected DTSTART and DTEND', () => {
   assert.match(ics, /DTSTART;TZID=Asia\/Jakarta:20261012T083000/);
   assert.match(ics, /DTEND;TZID=Asia\/Jakarta:20261012T173000/);
 });
-test('Flexi scheme uses the full availability window ending at 18:30', () => {
-  const ics = makeCalendar('Test', [{ date: '2026-10-12', team: 'Team A', name: 'Bob', scheme: 'flexi' }], {});
+test('regular hours remain 08:30–17:30 for every WFH event', () => {
+  const ics = makeCalendar('Test', [{ date: '2026-10-12', team: 'Team A' }], {});
   assert.match(ics, /DTSTART;TZID=Asia\/Jakarta:20261012T083000/);
-  assert.match(ics, /DTEND;TZID=Asia\/Jakarta:20261012T183000/);
-  assert.match(ics, /full 08:30–18:30 availability window/);
+  assert.match(ics, /DTEND;TZID=Asia\/Jakarta:20261012T173000/);
+  assert.match(ics, /Clock in 08:30 WIB · Clock out 17:30 WIB/);
 });
 test('every calendar includes Asia/Jakarta VTIMEZONE and fixed UTC+7 offset', () => {
   const ics = makeCalendar('Test', [], {});
@@ -96,8 +96,6 @@ test('holidays are skipped without advancing the team rotation', () => {
   const rootDir = tempRoot();
   fs.writeFileSync(path.join(rootDir, 'config', 'wfh.config.json'), JSON.stringify({ calendarName: 'Test', timezone: 'Asia/Jakarta', startDate: '2027-01-01', endDateMode: 'fixed', endDate: '2027-01-05', startTeam: 'Team A', teams: ['Team A', 'Team B'], rotationOrder: ['Team A', 'Team B'], eligibleWeekdays: [1, 2, 3, 4, 5] }));
   writeYear(rootDir, 2027, [...sampleHolidays(), { date: '2027-01-04', name: 'Local test holiday', type: 'national' }]);
-  const employeeData = { defaultScheme: 'regular', employees: [{ name: 'Alice', team: 'Team A', scheme: 'regular' }, { name: 'Bob', team: 'Team B', scheme: 'flexi' }] };
-  fs.writeFileSync(path.join(rootDir, 'data', 'employees.json'), JSON.stringify(employeeData));
   fs.writeFileSync(path.join(rootDir, 'data', 'holidays', 'overrides.json'), JSON.stringify({ overrides: [] }));
   const output = path.join(rootDir, 'public', 'ics');
   return generateIcs(path.join(rootDir, 'config', 'wfh.config.json'), output, rootDir).then(result => {
@@ -110,7 +108,7 @@ test('holidays are skipped without advancing the team rotation', () => {
 test('stable all-team and per-team output filenames do not change', async () => {
   const rootDir = tempRoot();
   fs.writeFileSync(path.join(rootDir, 'config', 'wfh.config.json'), JSON.stringify({ calendarName: 'Test', timezone: 'Asia/Jakarta', startDate: '2027-01-04', endDateMode: 'fixed', endDate: '2027-01-05', startTeam: 'Team A', teams: ['Team A', 'Team B'], rotationOrder: ['Team A', 'Team B'], eligibleWeekdays: [1, 2, 3, 4, 5] }));
-  writeYear(rootDir, 2027); fs.writeFileSync(path.join(rootDir, 'data', 'employees.json'), JSON.stringify({ defaultScheme: 'regular', employees: [{ name: 'Alice', team: 'Team A', scheme: 'regular' }] }));
+  writeYear(rootDir, 2027);
   fs.writeFileSync(path.join(rootDir, 'data', 'holidays', 'overrides.json'), JSON.stringify({ overrides: [] }));
   await generateIcs(path.join(rootDir, 'config', 'wfh.config.json'), path.join(rootDir, 'public', 'ics'), rootDir);
   assert.ok(fs.existsSync(path.join(rootDir, 'public', 'ics', 'all.ics')));
