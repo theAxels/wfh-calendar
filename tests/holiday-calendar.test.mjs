@@ -17,6 +17,7 @@ function tempRoot() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'wfh-calendar-'));
   fs.mkdirSync(path.join(root, 'data', 'holidays'), { recursive: true });
   fs.mkdirSync(path.join(root, 'config'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'data', 'holidays', 'sync-status.json'), JSON.stringify({ status: 'verified', availableYears: [2027], lastSuccess: '2026-10-10T00:00:00.000Z' }));
   return root;
 }
 function writeYear(root, year, holidays = sampleHolidays(year)) {
@@ -94,15 +95,15 @@ test('every calendar includes Asia/Jakarta VTIMEZONE and fixed UTC+7 offset', ()
 test('holidays are skipped without advancing the team rotation', () => {
   const rootDir = tempRoot();
   fs.writeFileSync(path.join(rootDir, 'config', 'wfh.config.json'), JSON.stringify({ calendarName: 'Test', timezone: 'Asia/Jakarta', startDate: '2027-01-01', endDateMode: 'fixed', endDate: '2027-01-05', startTeam: 'Team A', teams: ['Team A', 'Team B'], rotationOrder: ['Team A', 'Team B'], eligibleWeekdays: [1, 2, 3, 4, 5] }));
-  writeYear(rootDir, 2027, [...sampleHolidays(), { date: '2027-01-01', name: 'New Year', type: 'national' }]);
+  writeYear(rootDir, 2027, [...sampleHolidays(), { date: '2027-01-04', name: 'Local test holiday', type: 'national' }]);
   const employeeData = { defaultScheme: 'regular', employees: [{ name: 'Alice', team: 'Team A', scheme: 'regular' }, { name: 'Bob', team: 'Team B', scheme: 'flexi' }] };
   fs.writeFileSync(path.join(rootDir, 'data', 'employees.json'), JSON.stringify(employeeData));
   fs.writeFileSync(path.join(rootDir, 'data', 'holidays', 'overrides.json'), JSON.stringify({ overrides: [] }));
   const output = path.join(rootDir, 'public', 'ics');
   return generateIcs(path.join(rootDir, 'config', 'wfh.config.json'), output, rootDir).then(result => {
-    const dayEvents = result.events.filter(event => event.date === '2027-01-04');
-    assert.equal(dayEvents[0].team, 'Team A'); // Friday holiday skipped without rotating.
-    assert.equal(result.events.some(event => event.date === '2027-01-01'), false);
+    const dayEvents = result.events.filter(event => event.date === '2027-01-05');
+    assert.equal(dayEvents[0].team, 'Team A'); // Monday holiday skipped without rotating.
+    assert.equal(result.events.some(event => event.date === '2027-01-04'), false);
     fs.rmSync(rootDir, { recursive: true, force: true });
   });
 });
