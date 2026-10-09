@@ -122,7 +122,7 @@ export async function syncHolidays(options = {}) {
     if (requestedYear != null && targets.length === 0) throw new Error(`Year ${requestedYear} is not currently listed by the API (pending publication).`);
 
     const overridesFile = path.join(holidayDir, 'overrides.json');
-    const overridesData = readJson(overridesFile, { overrides: [] });
+    const overridesData = fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSync(overridesFile, 'utf8')) : { overrides: [] };
     if (!overridesData || !Array.isArray(overridesData.overrides ?? (Array.isArray(overridesData) ? overridesData : null))) throw new Error('overrides.json must contain an overrides array.');
     const overrides = overridesData.overrides ?? overridesData;
 
