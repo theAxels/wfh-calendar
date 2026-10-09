@@ -91,7 +91,7 @@ export function makeCalendar(name, events, config) {
     const window = eventWindow(event.scheme);
     lines.push('BEGIN:VEVENT',
       `UID:${event.date}-${slug(event.name)}-${slug(event.team)}@theaxels.github.io`,
-      `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\\d{3}/, '')}`,
+      `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}`,
       `DTSTART;TZID=${TZID}:${localDateTime(event.date, window.start)}`,
       `DTEND;TZID=${TZID}:${localDateTime(event.date, window.end)}`,
       `SUMMARY:${escapeText(`WFH — ${event.name} (${window.summary})`)}`,
