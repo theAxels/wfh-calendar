@@ -193,7 +193,11 @@ export async function syncHolidays(options = {}) {
     status: errors.length ? 'error' : 'verified',
     source: baseUrl
   };
-  if (!dryRun) writeJson(statusFile, status);
+  if (!dryRun) {
+    writeJson(statusFile, status);
+    const publicStatus = path.join(rootDir, 'public', 'data', 'holidays', 'sync-status.json');
+    writeJson(publicStatus, status);
+  }
   console.log(JSON.stringify({ ...summary, status: status.status }, null, 2));
   return { ...summary, status: status.status };
 }
