@@ -171,6 +171,10 @@ export async function syncHolidays(options = {}) {
       }
     }
     summary.pendingYears = summary.availableYears.filter(year => !local.includes(year));
+    if (consecutive != null && !summary.availableYears.includes(consecutive + 1) && !summary.pendingYears.includes(consecutive + 1)) {
+      summary.pendingYears.push(consecutive + 1);
+    }
+    summary.pendingYears.sort((a, b) => a - b);
     if (errors.length === 0 && discovered) summary.lastSuccess = now;
   } catch (error) {
     errors.push({ year: requestedYear, message: error instanceof Error ? error.message : String(error) });
