@@ -45,7 +45,7 @@ Ensure GitHub Pages is configured to use **GitHub Actions** as its build/deploym
 
 ## Notes
 
-- ICS feeds are public. Do not include private employee names or confidential information.
+- ICS feeds are public. Feeds contain team-level WFH events only; do not add private employee names or confidential information.
 - Refresh timing is controlled by each calendar provider; a stable URL does not guarantee an immediate refresh.
 - The generated feed contains timed events using the configured IANA timezone.
 
@@ -53,12 +53,16 @@ Ensure GitHub Pages is configured to use **GitHub Actions** as its build/deploym
 
 The repository synchronizes its local holiday cache from the public Tanggal Merah API and stores the last known-good data under `data/holidays/*.json`. The workflow runs weekly and can also be triggered manually. It validates every dataset before accepting it and refuses to extend future-year calendars when the API has not yet published the corresponding data.
 
-## Working hours schemes
+## Working hours
 
-Two working-hour schemes are supported:
+All generated WFH events use the Regular schedule in WIB:
 
-- Regular: 08:30–17:30 WIB with a 12:00–13:00 lunch break outside the paid work window.
-- Flexi: clock-in anywhere from 08:30–09:30 WIB, with a total 8-hour duty window ending no later than 18:30 WIB. For calendar events we use the full boundary 08:30–18:30 so employees can clock in at any time within the allowed range.
+- Clock in: **08:30 WIB**
+- Clock out: **17:30 WIB**
+- Lunch: **12:00–13:00 WIB** (included in the event description; not a separate event)
+- Timezone: `Asia/Jakarta`
+
+The calendar publishes team-level events, not employee-specific schedules. Holidays and collective leave are skipped without advancing the rotation.
 
 ## Manual overrides
 

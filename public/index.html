@@ -223,16 +223,34 @@
       }
     }).catch(() => { $('feeds-list').innerHTML = '<p>Feed index not found yet. Run <code>npm run generate</code> and publish the <code>public/</code> folder.</p>'; });
   </script>
-  <section class="status-bar" aria-label="Holiday and work-hour status">
-    <div class="status-pill">Holiday data verified through 2026 · Last successful sync: 2026-10-10 · Next year awaiting publication.</div>
-    <div class="status-row">
-      <span>Regular hours: 08:30–17:30 WIB</span>
-      <span>Flexi time: clock in 08:30–09:30 WIB, 8 hours total</span>
-    </div>
-    <div class="scheme-list" aria-label="Employee work-hour scheme badges">
-      <span class="scheme-badge" title="Regular scheme: 08:30 WIB clock-in, 17:30 WIB clock-out, lunch 12:00–13:00.">Regular</span>
-      <span class="scheme-badge scheme-badge--flexi" title="Flexi scheme: clock in anytime between 08:30 and 09:30 WIB; total working time is 8 hours, ending no later than 18:30 WIB.">Flexi</span>
-    </div>
+  <section class="status-bar" aria-label="Holiday and working-hours status" id="holiday-status">
+    <div class="status-pill" id="holiday-coverage" role="status" aria-live="polite">Loading holiday coverage…</div>
+    <div class="status-row"><span><strong>Regular working hours:</strong> 08:30–17:30 WIB</span></div>
+    <p class="status-row" id="holiday-source-note">Holiday data is sourced from the third-party Tanggal Merah API. Future years are published only after validation.</p>
   </section>
+  <script>
+    (() => {
+      const coverage = document.getElementById('holiday-coverage');
+      fetch('./data/holidays/sync-status.json', { cache: 'no-store' })
+        .then(response => { if (!response.ok) throw new Error('Holiday status unavailable'); return response.json(); })
+        .then(status => {
+          const lastSuccess = status.lastSuccess ? new Date(status.lastSuccess).toISOString().slice(0, 10) : 'not recorded';
+          const pending = Array.isArray(status.pendingYears) && status.pendingYears.length
+            ? 'Next year pending publication: ' + status.pendingYears.join(', ')
+            : 'Future coverage depends on source publication.';
+          coverage.textContent = 'Holiday data verified through ' + (status.verifiedThrough || status.coverage || 'unknown') +
+            ' · Last successful sync: ' + lastSuccess + ' · ' + pending;
+          coverage.dataset.status = status.status || 'unknown';
+          if (status.status === 'error' || (status.errors || []).length) {
+            coverage.title = 'Latest sync errors: ' + status.errors.map(error => error.message || String(error)).join('; ');
+          }
+        })
+        .catch(() => {
+          coverage.textContent = 'Holiday coverage status unavailable · Check sync-status.json before relying on future dates.';
+          coverage.dataset.status = 'error';
+        });
+    })();
+  </script>
+  <!-- Employee-specific scheme rendering removed: calendar uses regular team hours only. -->
 </body>
 </html>
