@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "generate": "node scripts/generate-ics.mjs",
-    "check": "node --check scripts/generate-ics.mjs && npm run generate"
+    "sync-holidays": "node scripts/sync-holidays.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check scripts/generate-ics.mjs && node --check scripts/sync-holidays.mjs && npm run generate"
   },
   "engines": { "node": ">=20" }
 }

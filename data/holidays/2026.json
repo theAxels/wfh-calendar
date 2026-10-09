@@ -1,0 +1,20 @@
+{
+  "source": "https://tanggalmerah.upset.dev/api/holidays?year=2026",
+  "fetchedAt": "2026-10-10T00:00:00.000Z",
+  "year": 2026,
+  "holidays": [
+    { "date": "2026-01-01", "name": "Tahun Baru 2026", "type": "national" },
+    { "date": "2026-02-07", "name": "Isra Mi'raj", "type": "national" },
+    { "date": "2026-03-17", "name": "Hari Raya Nyepi", "type": "national" },
+    { "date": "2026-03-20", "name": "Cuti Bersama 2026", "type": "collective_leave" },
+    { "date": "2026-04-01", "name": "Jumat Agung", "type": "national" },
+    { "date": "2026-05-01", "name": "Hari Buruh Internasional", "type": "national" },
+    { "date": "2026-05-14", "name": "Kenaikan Isa Almasih", "type": "national" },
+    { "date": "2026-06-01", "name": "Hari Lahir Pancasila", "type": "national" },
+    { "date": "2026-06-26", "name": "Idul Adha", "type": "national" },
+    { "date": "2026-07-17", "name": "Tahun Baru Islam 1448 Hijriah", "type": "national" },
+    { "date": "2026-08-17", "name": "Hari Kemerdekaan Indonesia", "type": "national" },
+    { "date": "2026-09-25", "name": "Maulid Nabi Muhammad SAW", "type": "national" },
+    { "date": "2026-12-25", "name": "Natal", "type": "national" }
+  ]
+}

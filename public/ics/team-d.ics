@@ -1,150 +1,157 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Axel Studio//WFH Calendar Generator 2.0//EN
+PRODID:-//theAxels//wfh-calendar//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:WFH Calendar — Team D
 X-WR-TIMEZONE:Asia/Jakarta
-REFRESH-INTERVAL;VALUE=DURATION:PT12H
-X-PUBLISHED-TTL:PT12H
+BEGIN:VTIMEZONE
+TZID:Asia/Jakarta
+BEGIN:STANDARD
+TZOFFSETFROM:+0700
+TZOFFSETTO:+0700
+TZNAME:WIB
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
-UID:2026-10-14-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261014T090000
-DTEND;TZID=Asia/Jakarta:20261014T170000
+UID:2026-10-14-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261014T083000
+DTEND;TZID=Asia/Jakarta:20261014T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-10-20-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261020T090000
-DTEND;TZID=Asia/Jakarta:20261020T170000
+UID:2026-10-20-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261020T083000
+DTEND;TZID=Asia/Jakarta:20261020T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-10-26-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261026T090000
-DTEND;TZID=Asia/Jakarta:20261026T170000
+UID:2026-10-26-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261026T083000
+DTEND;TZID=Asia/Jakarta:20261026T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-10-30-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261030T090000
-DTEND;TZID=Asia/Jakarta:20261030T170000
+UID:2026-10-30-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261030T083000
+DTEND;TZID=Asia/Jakarta:20261030T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-05-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261105T090000
-DTEND;TZID=Asia/Jakarta:20261105T170000
+UID:2026-11-05-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261105T083000
+DTEND;TZID=Asia/Jakarta:20261105T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-11-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261111T090000
-DTEND;TZID=Asia/Jakarta:20261111T170000
+UID:2026-11-11-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261111T083000
+DTEND;TZID=Asia/Jakarta:20261111T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-17-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261117T090000
-DTEND;TZID=Asia/Jakarta:20261117T170000
+UID:2026-11-17-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261117T083000
+DTEND;TZID=Asia/Jakarta:20261117T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-23-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261123T090000
-DTEND;TZID=Asia/Jakarta:20261123T170000
+UID:2026-11-23-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261123T083000
+DTEND;TZID=Asia/Jakarta:20261123T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-27-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261127T090000
-DTEND;TZID=Asia/Jakarta:20261127T170000
+UID:2026-11-27-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261127T083000
+DTEND;TZID=Asia/Jakarta:20261127T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-03-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261203T090000
-DTEND;TZID=Asia/Jakarta:20261203T170000
+UID:2026-12-03-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261203T083000
+DTEND;TZID=Asia/Jakarta:20261203T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-09-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261209T090000
-DTEND;TZID=Asia/Jakarta:20261209T170000
+UID:2026-12-09-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261209T083000
+DTEND;TZID=Asia/Jakarta:20261209T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-15-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261215T090000
-DTEND;TZID=Asia/Jakarta:20261215T170000
+UID:2026-12-15-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261215T083000
+DTEND;TZID=Asia/Jakarta:20261215T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-21-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261221T090000
-DTEND;TZID=Asia/Jakarta:20261221T170000
+UID:2026-12-21-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261221T083000
+DTEND;TZID=Asia/Jakarta:20261221T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-29-team-d@wfh-calendar-generator
-DTSTAMP:20261009T160434Z
-DTSTART;TZID=Asia/Jakarta:20261229T090000
-DTEND;TZID=Asia/Jakarta:20261229T170000
+UID:2026-12-28-team-d@theaxels.github.io
+DTSTAMP:20261009T180549Z
+DTSTART;TZID=Asia/Jakarta:20261228T083000
+DTEND;TZID=Asia/Jakarta:20261228T173000
 SUMMARY:Team D — WFH
-DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
- ve leave are skipped using Tanggal Merah API data.
+DESCRIPTION:Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13
+ :00
 CATEGORIES:Team D,WFH
 END:VEVENT
 END:VCALENDAR

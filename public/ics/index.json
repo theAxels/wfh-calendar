@@ -1,32 +1,38 @@
 {
   "calendarName": "WFH Calendar",
-  "generatedAt": "2026-10-09T16:04:34.986Z",
+  "generatedAt": "2026-10-09T18:05:49.130Z",
   "startDate": "2026-10-09",
   "endDate": "2026-12-31",
+  "requestedEndDate": "2031-12-31",
   "timezone": "Asia/Jakarta",
-  "totalEvents": 58,
+  "totalEvents": 59,
   "stable": {
     "combinedFile": "all.ics",
     "teams": [
       {
+        "team": "All teams",
+        "file": "all.ics",
+        "events": 59
+      },
+      {
         "team": "Team A",
-        "events": 15,
-        "file": "team-a.ics"
+        "file": "team-a.ics",
+        "events": 15
       },
       {
         "team": "Team B",
-        "events": 15,
-        "file": "team-b.ics"
+        "file": "team-b.ics",
+        "events": 15
       },
       {
         "team": "Team C",
-        "events": 14,
-        "file": "team-c.ics"
+        "file": "team-c.ics",
+        "events": 15
       },
       {
         "team": "Team D",
-        "events": 14,
-        "file": "team-d.ics"
+        "file": "team-d.ics",
+        "events": 14
       }
     ]
   },
@@ -34,39 +40,42 @@
   "combinedFile": "all.ics",
   "teams": [
     {
+      "team": "All teams",
+      "file": "all.ics",
+      "events": 59
+    },
+    {
       "team": "Team A",
-      "events": 15,
-      "file": "team-a.ics"
+      "file": "team-a.ics",
+      "events": 15
     },
     {
       "team": "Team B",
-      "events": 15,
-      "file": "team-b.ics"
+      "file": "team-b.ics",
+      "events": 15
     },
     {
       "team": "Team C",
-      "events": 14,
-      "file": "team-c.ics"
+      "file": "team-c.ics",
+      "events": 15
     },
     {
       "team": "Team D",
-      "events": 14,
-      "file": "team-d.ics"
+      "file": "team-d.ics",
+      "events": 14
     }
   ],
   "annualFeeds": [
     {
       "year": 2026,
       "file": "2026.ics",
-      "events": 58
+      "events": 59
     }
   ],
-  "holidaySourceMode": "tanggalmerah-api",
   "holidayCoverage": {
-    "mode": "tanggalmerah-api",
     "requestedEndDate": "2031-12-31",
     "coveredThrough": "2026-12-31",
-    "latestAvailableYear": 2026,
+    "latestVerifiedDate": "2026-12-31",
     "capped": true
   }
 }

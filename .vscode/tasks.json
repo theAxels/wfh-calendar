@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "validate-node",
+			"type": "shell",
+			"command": "node --check scripts/generate-ics.mjs && node --check scripts/sync-holidays.mjs && node --test tests/*.test.mjs",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

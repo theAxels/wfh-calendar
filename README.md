@@ -48,3 +48,26 @@ Ensure GitHub Pages is configured to use **GitHub Actions** as its build/deploym
 - ICS feeds are public. Do not include private employee names or confidential information.
 - Refresh timing is controlled by each calendar provider; a stable URL does not guarantee an immediate refresh.
 - The generated feed contains timed events using the configured IANA timezone.
+
+## Holiday sync system
+
+The repository synchronizes its local holiday cache from the public Tanggal Merah API and stores the last known-good data under `data/holidays/*.json`. The workflow runs weekly and can also be triggered manually. It validates every dataset before accepting it and refuses to extend future-year calendars when the API has not yet published the corresponding data.
+
+## Working hours schemes
+
+Two working-hour schemes are supported:
+
+- Regular: 08:30–17:30 WIB with a 12:00–13:00 lunch break outside the paid work window.
+- Flexi: clock-in anywhere from 08:30–09:30 WIB, with a total 8-hour duty window ending no later than 18:30 WIB. For calendar events we use the full boundary 08:30–18:30 so employees can clock in at any time within the allowed range.
+
+## Manual overrides
+
+Use `data/holidays/overrides.json` to document corrections from official Indonesian government announcements. Overrides take precedence over API data and each item must include the holiday date, name, source URL, reason, verifier, and verification timestamp.
+
+## Run a manual sync
+
+```bash
+npm run sync-holidays -- --year=2027
+npm run sync-holidays -- --dry-run
+npm run sync-holidays -- --force
+```
