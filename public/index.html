@@ -59,12 +59,27 @@
     @media(max-width:720px){.site-header{gap:10px}.brand{gap:9px}.brand-name{font-size:16px}.header-cta{padding:9px 12px;font-size:12px;white-space:nowrap}.hero{min-height:auto;padding-top:60px}.hero h1{font-size:clamp(42px,11vw,76px);line-height:.96;letter-spacing:-.045em}.intro{font-size:16px}.section-head{display:block}.section-intro{margin-top:12px}.links{grid-template-columns:repeat(2,minmax(0,1fr))}.feed{min-height:180px;padding:18px 15px}.feed h3{font-size:21px}.guide-head{align-items:flex-start}.guide-head-meta{justify-content:flex-start}.guide-layout{gap:14px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step{padding:14px 12px;gap:10px}.step-num{flex-basis:30px;width:30px;height:30px}.step strong{padding-right:0}.visual{padding:15px}.mock-window{min-height:170px}footer{grid-template-columns:1fr 1fr;padding-inline:18px}.footer-brand-block{grid-column:1/-1}}
     @media(max-width:480px){main{padding-inline:16px}.site-header{padding-inline:10px;gap:8px}.brand{gap:7px}.brand-mark{width:26px;height:26px;flex:0 0 26px}.brand-name{font-size:14px}.header-cta{padding:7px 8px;font-size:11px;gap:5px}.hero{padding-top:50px}.hero h1{font-size:clamp(38px,10.8vw,54px)}.links,.steps{grid-template-columns:1fr}.feed{min-height:150px}.tabs{display:grid;width:100%;grid-template-columns:1fr;gap:3px;border-radius:14px}.tab{width:100%;text-align:center;padding:11px}.guide-head-meta{width:100%;justify-content:space-between}.visual{padding:13px}.mock-window{min-height:150px;padding-top:15px}.step{padding:15px}.step-controls .btn{padding:10px 13px}.callout{line-height:1.65}footer{grid-template-columns:1fr;gap:26px}.footer-brand-block{grid-column:auto}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+    /* Compact status strip and responsive polish */
+    .status-bar{max-width:none;margin:0 0 clamp(38px,5vw,64px);padding:13px 0;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:16px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent;font-size:13px}
+    .status-pill{justify-content:flex-start;gap:9px;padding:0;border:0;background:transparent;font-size:13px;font-weight:800}
+    .status-pill::before{content:"";width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#16a34a}
+    .status-pill[data-status="error"]::before{background:#dc2626}
+    .status-row{margin:0;color:var(--muted);font-size:13px}
+    .status-row strong{color:var(--ink);font-weight:800}
+    .feed{border-radius:2px}
+    .feed--all{background:linear-gradient(145deg,rgba(255,255,255,.3),rgba(255,255,255,.92))}
+    .feed:focus-within,.feed:hover{transform:translateY(-2px)}
+    .feed .btn{min-height:28px}
+    .header-cta{scroll-margin-top:80px}
+    @media(max-width:720px){.status-bar{align-items:flex-start;flex-direction:column;gap:7px;padding:12px 0;margin-bottom:38px}.status-pill{font-size:12px}.status-row{font-size:12px}.header-cta{white-space:nowrap}.feed:hover,.feed:focus-within{transform:none}}
+    @media(max-width:360px){.brand-name{font-size:13px}.header-cta{font-size:10px;padding:7px}.status-pill{align-items:flex-start;line-height:1.4}}
   </style>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="WFH Calendar home"><span class="brand-mark" aria-hidden="true">W</span><span><span class="brand-name">WFH Calendar</span><span class="header-tag">Shared calendar · Easy setup</span></span></a>
-    <div class="header-right"><nav class="nav-links" aria-label="Main navigation"><a href="#feeds">Calendars</a><a href="#subscribe-guide">How to subscribe</a></nav><a class="header-cta" href="./ics/all.ics">Open ICS feed <span aria-hidden="true">↗</span></a></div>
+    <div class="header-right"><nav class="nav-links" aria-label="Main navigation"><a href="#feeds">Calendars</a><a href="#subscribe-guide">How to subscribe</a></nav><a class="header-cta" href="#feeds">Choose a feed <span aria-hidden="true">↓</span></a></div>
   </header>
   <main id="top">
     <section class="hero">
@@ -85,6 +100,11 @@
           <rect x="37" y="181" width="246" height="24" rx="8" fill="light-dark(#edf4ef,#202e27)"/><circle cx="51" cy="193" r="5" fill="light-dark(#16734c,#75d8a5)"/><text x="63" y="197" font-size="10" font-weight="700" fill="light-dark(#193328,#edf7f0)">Team rotation synced</text>
         </svg>
       </div>
+    </section>
+
+    <section class="status-bar" aria-label="Calendar status" id="holiday-status">
+      <div class="status-pill" id="holiday-coverage" role="status" aria-live="polite">Checking holiday coverage…</div>
+      <div class="status-row"><span><strong>Working hours</strong> · 08:30–17:30 WIB</span></div>
     </section>
 
     <section class="panel" id="feeds">
@@ -127,7 +147,7 @@
   </main>
   <footer>
     <div class="footer-brand-block"><div class="footer-brand">WFH Calendar</div><div class="footer-tag">Shared calendar · Easy setup</div></div>
-    <div><div class="footer-heading">Navigate</div><div class="footer-links"><a href="./ics/all.ics">All Teams</a><a href="./ics/team-a.ics">Team A</a><a href="./ics/team-b.ics">Team B</a><a href="./ics/team-c.ics">Team C</a><a href="./ics/team-d.ics">Team D</a><a href="#subscribe-guide">Google Calendar</a><a href="#subscribe-guide">Apple Calendar</a></div></div>
+    <div><div class="footer-heading">Team feeds</div><div class="footer-links"><a href="./ics/team-a.ics">Team A</a><a href="./ics/team-b.ics">Team B</a><a href="./ics/team-c.ics">Team C</a><a href="./ics/team-d.ics">Team D</a><a href="#subscribe-guide">Google Calendar</a><a href="#subscribe-guide">Apple Calendar</a></div></div>
     <div><div class="footer-heading">Project</div><a class="repo-link" href="https://github.com/theAxels/wfh-calendar" target="_blank" rel="noopener noreferrer">GitHub repository <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M8 2h6v6M14 2 7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><p style="max-width:260px;line-height:1.6;margin-top:12px">Public calendar feeds for a simple, continuously updated WFH rotation.</p></div>
   </footer>
   <script>
@@ -203,8 +223,10 @@
     renderGuide();
     fetch('./ics/index.json').then(response => { if (!response.ok) throw new Error('Feed index unavailable'); return response.json(); }).then(data => {
       const root = $('feeds-list'); root.replaceChildren();
-      const entries = [{ label: 'All teams', file: data.combinedFile, count: data.totalEvents }, ...data.teams.map(team => ({ label: team.team, file: team.file, count: team.events }))];
-      for (const item of entries) {
+      const teamEntries = (data.stable?.teams || data.teams || []).filter(team => team.file !== data.combinedFile && !/^all\s+teams?$/i.test(team.team));
+      const entries = [{ label: 'All teams', file: data.combinedFile || data.stable?.combinedFile || 'all.ics', count: data.totalEvents ?? data.stable?.teams?.find(team => team.file === (data.combinedFile || data.stable?.combinedFile))?.events ?? 0 }, ...teamEntries.map(team => ({ label: team.team, file: team.file, count: team.events }))];
+      const uniqueEntries = [...new Map(entries.filter(item => item.file).map(item => [item.file, item])).values()];
+      for (const item of uniqueEntries) {
         const card = document.createElement('article'); card.className = 'feed' + (item.label === 'All teams' ? ' feed--all' : '');
         const title = document.createElement('h3'); title.textContent = item.label;
         const p = document.createElement('p');
@@ -223,30 +245,20 @@
       }
     }).catch(() => { $('feeds-list').innerHTML = '<p>Feed index not found yet. Run <code>npm run generate</code> and publish the <code>public/</code> folder.</p>'; });
   </script>
-  <section class="status-bar" aria-label="Holiday and working-hours status" id="holiday-status">
-    <div class="status-pill" id="holiday-coverage" role="status" aria-live="polite">Loading holiday coverage…</div>
-    <div class="status-row"><span><strong>Regular working hours:</strong> 08:30–17:30 WIB</span></div>
-    <p class="status-row" id="holiday-source-note">Holiday data is sourced from the third-party Tanggal Merah API. Future years are published only after validation.</p>
-  </section>
   <script>
     (() => {
       const coverage = document.getElementById('holiday-coverage');
       fetch('./data/holidays/sync-status.json', { cache: 'no-store' })
         .then(response => { if (!response.ok) throw new Error('Holiday status unavailable'); return response.json(); })
         .then(status => {
-          const lastSuccess = status.lastSuccess ? new Date(status.lastSuccess).toISOString().slice(0, 10) : 'not recorded';
-          const pending = Array.isArray(status.pendingYears) && status.pendingYears.length
-            ? 'Next year pending publication: ' + status.pendingYears.join(', ')
-            : 'Future coverage depends on source publication.';
-          coverage.textContent = 'Holiday data verified through ' + (status.verifiedThrough || status.coverage || 'unknown') +
-            ' · Last successful sync: ' + lastSuccess + ' · ' + pending;
+          const date = status.verifiedThrough || status.coverage;
+          coverage.textContent = date
+            ? 'Holidays verified through ' + new Date(date + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+            : 'Holiday coverage is being verified';
           coverage.dataset.status = status.status || 'unknown';
-          if (status.status === 'error' || (status.errors || []).length) {
-            coverage.title = 'Latest sync errors: ' + status.errors.map(error => error.message || String(error)).join('; ');
-          }
         })
         .catch(() => {
-          coverage.textContent = 'Holiday coverage status unavailable · Check sync-status.json before relying on future dates.';
+          coverage.textContent = 'Holiday coverage status unavailable';
           coverage.dataset.status = 'error';
         });
     })();
