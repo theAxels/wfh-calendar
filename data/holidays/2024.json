@@ -1,0 +1,142 @@
+{
+  "source": "https://tanggalmerah.upset.dev/api/holidays?year=2024",
+  "fetchedAt": "2026-10-09T18:11:13.587Z",
+  "year": 2024,
+  "holidays": [
+    {
+      "date": "2024-01-01",
+      "name": "Tahun Baru 2024 Masehi",
+      "type": "national"
+    },
+    {
+      "date": "2024-02-08",
+      "name": "Isra Mi’raj Nabi Muhammad SAW",
+      "type": "national"
+    },
+    {
+      "date": "2024-02-09",
+      "name": "Tahun Baru Imlek 2575 Kongzili",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-02-10",
+      "name": "Tahun Baru Imlek 2575 Kongzili",
+      "type": "national"
+    },
+    {
+      "date": "2024-03-11",
+      "name": "Hari Suci Nyepi Tahun Baru Saka 1946",
+      "type": "national"
+    },
+    {
+      "date": "2024-03-12",
+      "name": "Hari Suci Nyepi Tahun Baru Saka 1946",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-03-29",
+      "name": "Wafat Yesus Kristus / Jumat Agung",
+      "type": "national"
+    },
+    {
+      "date": "2024-03-31",
+      "name": "Kebangkitan Yesus Kristus (Paskah)",
+      "type": "national"
+    },
+    {
+      "date": "2024-04-08",
+      "name": "Hari Raya Idul Fitri 1445 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-04-09",
+      "name": "Hari Raya Idul Fitri 1445 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-04-10",
+      "name": "Hari Raya Idul Fitri 1445 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2024-04-11",
+      "name": "Hari Raya Idul Fitri 1445 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2024-04-12",
+      "name": "Hari Raya Idul Fitri 1445 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-04-15",
+      "name": "Hari Raya Idul Fitri 1445 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-05-01",
+      "name": "Hari Buruh Internasional",
+      "type": "national"
+    },
+    {
+      "date": "2024-05-09",
+      "name": "Kenaikan Yesus Kristus",
+      "type": "national"
+    },
+    {
+      "date": "2024-05-10",
+      "name": "Kenaikan Yesus Kristus",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-05-23",
+      "name": "Hari Raya Waisak 2568 BE",
+      "type": "national"
+    },
+    {
+      "date": "2024-05-24",
+      "name": "Hari Raya Waisak 2568 BE",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-06-01",
+      "name": "Hari Lahir Pancasila",
+      "type": "national"
+    },
+    {
+      "date": "2024-06-14",
+      "name": "Hari Raya Idul Adha 1445 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2024-06-17",
+      "name": "Hari Raya Idul Adha 1445 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2024-07-07",
+      "name": "Tahun Baru Islam 1446 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2024-08-17",
+      "name": "Hari Kemerdekaan Republik Indonesia",
+      "type": "national"
+    },
+    {
+      "date": "2024-09-16",
+      "name": "Maulid Nabi Muhammad SAW",
+      "type": "national"
+    },
+    {
+      "date": "2024-12-25",
+      "name": "Hari Raya Natal",
+      "type": "national"
+    },
+    {
+      "date": "2024-12-26",
+      "name": "Hari Raya Natal",
+      "type": "collective_leave"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "source": "https://tanggalmerah.upset.dev/api/holidays?year=2025",
+  "fetchedAt": "2026-10-09T18:11:13.833Z",
+  "year": 2025,
+  "holidays": [
+    {
+      "date": "2025-01-01",
+      "name": "Tahun Baru 2025 Masehi",
+      "type": "national"
+    },
+    {
+      "date": "2025-01-27",
+      "name": "Isra Mi’raj Nabi Muhammad SAW",
+      "type": "national"
+    },
+    {
+      "date": "2025-01-28",
+      "name": "Tahun Baru Imlek 2576 Kongzili",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-01-29",
+      "name": "Tahun Baru Imlek 2576 Kongzili",
+      "type": "national"
+    },
+    {
+      "date": "2025-03-28",
+      "name": "Hari Suci Nyepi Tahun Baru Saka 1947",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-03-29",
+      "name": "Hari Suci Nyepi Tahun Baru Saka 1947",
+      "type": "national"
+    },
+    {
+      "date": "2025-03-31",
+      "name": "Hari Raya Idul Fitri 1446 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2025-04-01",
+      "name": "Hari Raya Idul Fitri 1446 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2025-04-02",
+      "name": "Hari Raya Idul Fitri 1446 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-04-03",
+      "name": "Hari Raya Idul Fitri 1446 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-04-04",
+      "name": "Hari Raya Idul Fitri 1446 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-04-07",
+      "name": "Hari Raya Idul Fitri 1446 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-04-18",
+      "name": "Wafat Yesus Kristus / Jumat Agung",
+      "type": "national"
+    },
+    {
+      "date": "2025-04-20",
+      "name": "Kebangkitan Yesus Kristus (Paskah)",
+      "type": "national"
+    },
+    {
+      "date": "2025-05-01",
+      "name": "Hari Buruh Internasional",
+      "type": "national"
+    },
+    {
+      "date": "2025-05-12",
+      "name": "Hari Raya Waisak 2569 BE",
+      "type": "national"
+    },
+    {
+      "date": "2025-05-13",
+      "name": "Hari Raya Waisak 2569 BE",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-05-29",
+      "name": "Kenaikan Yesus Kristus",
+      "type": "national"
+    },
+    {
+      "date": "2025-05-30",
+      "name": "Kenaikan Yesus Kristus",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-06-01",
+      "name": "Hari Lahir Pancasila",
+      "type": "national"
+    },
+    {
+      "date": "2025-06-06",
+      "name": "Hari Raya Idul Adha 1446 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2025-06-09",
+      "name": "Hari Raya Idul Adha 1446 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-06-27",
+      "name": "Tahun Baru Islam 1447 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2025-08-17",
+      "name": "Hari Kemerdekaan Republik Indonesia",
+      "type": "national"
+    },
+    {
+      "date": "2025-08-18",
+      "name": "Hari Kemerdekaan Republik Indonesia",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2025-09-05",
+      "name": "Maulid Nabi Muhammad SAW",
+      "type": "national"
+    },
+    {
+      "date": "2025-12-25",
+      "name": "Hari Raya Natal",
+      "type": "national"
+    },
+    {
+      "date": "2025-12-26",
+      "name": "Hari Raya Natal",
+      "type": "collective_leave"
+    }
+  ]
+}
