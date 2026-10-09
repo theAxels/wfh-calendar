@@ -18,6 +18,46 @@
     .tabs{display:inline-flex;gap:4px;flex-wrap:wrap;padding:4px;border:1px solid var(--line);border-radius:999px;background:transparent;margin:26px 0}.tab{appearance:none;border:1px solid transparent;cursor:pointer;border-radius:999px;background:transparent;color:var(--muted);padding:10px 16px;font-size:13px;font-weight:700;flex:0 0 auto;transition:background 150ms,color 150ms,transform 150ms}.tab:hover{color:var(--ink);transform:scale(1.02)}.tab[aria-selected="true"]{background:var(--ink);color:#fff}.guide-head{display:flex;align-items:end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}.platform-label{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.1em;margin-bottom:10px}.platform-mark{width:25px;height:25px;display:inline-grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:12px;color:var(--ink)}.guide-head h3{font-size:clamp(24px,3vw,34px)}.step-count{color:var(--muted);font-size:12px;font-weight:700;white-space:nowrap}.guide-layout{display:block;margin-top:24px!important}.steps{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-content:start}.steps::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--line)}.step{position:relative;display:flex;min-height:166px;flex-direction:column;align-items:flex-start;gap:20px;border:1px solid var(--line);border-radius:0;padding:22px;cursor:pointer;background:transparent;color:var(--ink);text-align:left;font:inherit;transition:background 180ms,border-color 180ms,transform 180ms}.step:hover{background:#fff;border-color:var(--strong);transform:translateY(-2px)}.step[aria-current="step"]{background:#fff;border-color:var(--strong)}.step-num{position:absolute;top:12px;right:16px;display:grid;place-items:center;width:auto;height:auto;border:0;border-radius:0;background:transparent;color:var(--echo-a);font:700 48px/.9 var(--font-display)}.step[aria-current="step"] .step-num{background:transparent;color:var(--echo-a);border-color:transparent}.step[aria-current="step"]::before{content:"";position:absolute;top:-5px;left:20px;width:8px;height:8px;border-radius:50%;background:var(--blue)}.step>span:last-child{position:relative;z-index:1;max-width:88%;margin-top:34px}.step strong{display:block;font-size:16px;line-height:1.2;margin:0 0 8px}.step small{color:var(--muted);display:block;font-size:14px;line-height:1.45}.visual{display:none}.step-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}.btn{border:1px solid var(--strong);border-radius:999px;background:transparent;color:var(--ink);padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:background 150ms,color 150ms,transform 150ms}.btn:hover:not(:disabled){transform:scale(1.02)}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn:disabled{opacity:.35;cursor:not-allowed}.callout{margin-top:26px;padding:22px 0 0;border-top:1px solid var(--line);background:transparent;border-radius:0;color:var(--muted);font-size:14px}.direct-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;text-decoration:none;background:var(--blue);color:#fff;border:1px solid var(--blue);border-radius:999px;padding:13px 19px;font-size:14px;font-weight:900;transition:transform 150ms,background 150ms}.direct-link:hover{transform:scale(1.02);background:#1d4ed8}
     footer{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;margin:0;padding:38px clamp(18px,4vw,64px) 42px;background:#1e1e1e;color:rgba(246,246,246,.68);font-size:13px;border-top:1px solid rgba(255,255,255,.05)}.footer-brand{color:#f6f6f6;font:700 20px/1 var(--font-display);letter-spacing:-.035em}.footer-tag{margin-top:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}.footer-heading{color:#f6f6f6;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}.footer-links{display:flex;flex-wrap:wrap;gap:8px 16px}footer a{color:rgba(246,246,246,.75);text-decoration:none;transition:color 120ms}footer a:hover{color:#fff}.repo-link{display:inline-flex;align-items:center;gap:8px}.repo-link svg{width:14px;height:14px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     @media(max-width:1000px){.links{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h1{max-width:900px}}@media(max-width:720px){.site-header{padding-inline:18px}.header-tag,.nav-links{display:none}main{padding-inline:18px}.hero{min-height:42vh;padding-top:64px}.hero h1{font-size:12vw;margin-top:20px}.section-head{display:block}.section-intro{margin-top:12px}.links{grid-template-columns:repeat(2,minmax(0,1fr))}.feed{min-height:188px;padding:18px 15px}.feed h3{font-size:21px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.guide-head{align-items:flex-start}footer{grid-template-columns:1fr 1fr;padding-inline:18px}.footer-brand-block{grid-column:1/-1}}@media(max-width:440px){.links,.steps{grid-template-columns:1fr}.feed{min-height:160px}.tabs{width:100%}.tab{flex:1 1 auto;padding-inline:11px}footer{grid-template-columns:1fr;gap:26px}.footer-brand-block{grid-column:auto}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+    /* Step-by-step guide visuals and responsive refinements */
+    .hero>div:first-child{width:100%;display:flex;flex-direction:column;align-items:center}
+    .hero .eyebrow{max-width:100%}
+    .hero h1{width:100%;}
+    .intro{width:min(100%,680px);max-width:680px;margin:0 auto;text-align:center;align-self:center}
+    .guide-head{align-items:center;flex-wrap:wrap}
+    .guide-head>div{min-width:0;flex:1 1 260px}
+    .guide-head-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+    .guide-resource{display:inline-flex;align-items:center;gap:7px;color:var(--blue);font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap}
+    .guide-resource:hover{text-decoration:underline}
+    .guide-layout{display:grid!important;grid-template-columns:minmax(240px,.82fr) minmax(0,1.18fr);gap:18px;align-items:start;margin-top:22px!important}
+    .visual{display:block;min-width:0;order:0;overflow:hidden;border:1px solid var(--line);background:var(--paper);padding:18px;position:relative}
+    .visual-top{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding-bottom:14px;border-bottom:1px solid var(--line)}
+    .window-dots{display:flex;gap:4px}.window-dots i{display:block;width:6px;height:6px;border-radius:50%;background:var(--echo-a)}
+    .mock-window{min-height:230px;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:20px 0 8px;overflow-wrap:anywhere}
+    .mock-brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:15px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+    .brand-icon{display:inline-grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:#eff4ff;color:var(--blue);font-weight:900}
+    .mock-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border:1px solid var(--line);background:#fafafa;font-size:13px;min-width:0}
+    .mock-row strong{color:var(--blue);font-weight:900}
+    .mock-field{width:100%;min-width:0;padding:12px;border:1px solid var(--blue);background:#f7f9ff;color:#253a70;font-size:12px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word}
+    .mock-button{display:inline-flex;align-self:flex-start;align-items:center;justify-content:center;max-width:100%;padding:10px 16px;background:var(--blue);color:#fff;font-size:12px;font-weight:900}
+    .mock-line{height:8px;width:90%;background:#e9e9e9;border-radius:99px}.mock-line.short{width:56%}
+    .mock-note{margin:10px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+    .steps{grid-template-columns:1fr;gap:8px;order:1;min-width:0}
+    .steps::before{display:none}
+    .step{min-height:0;flex-direction:row;align-items:flex-start;gap:14px;padding:15px 16px}
+    .step-num{position:relative;top:auto;right:auto;flex:0 0 34px;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--muted);font:700 14px/1 var(--font-display)}
+    .step[aria-current="step"] .step-num{background:var(--blue);border-color:var(--blue);color:#fff}
+    .step[aria-current="step"]::before{display:none}
+    .step>span:last-child{max-width:none;margin-top:0;min-width:0}
+    .step strong{padding-right:26px}
+    .step small{font-size:13px}
+    .step[aria-current="step"]{box-shadow:inset 3px 0 0 var(--blue)}
+    .step:focus-visible,.tab:focus-visible,.btn:focus-visible,.header-cta:focus-visible,.guide-resource:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+    .step-controls{margin-top:20px}
+    @media(max-width:900px){.links{grid-template-columns:repeat(3,minmax(0,1fr))}.guide-layout{grid-template-columns:minmax(0,1fr)}.visual{order:0}.mock-window{min-height:190px}.steps{grid-template-columns:repeat(2,minmax(0,1fr));order:1}.step{height:100%}}
+    @media(max-width:720px){.site-header{gap:10px}.brand{gap:9px}.brand-name{font-size:16px}.header-cta{padding:9px 12px;font-size:12px;white-space:nowrap}.hero{min-height:auto;padding-top:60px}.hero h1{font-size:clamp(42px,11vw,76px);line-height:.96;letter-spacing:-.045em}.intro{font-size:16px}.section-head{display:block}.section-intro{margin-top:12px}.links{grid-template-columns:repeat(2,minmax(0,1fr))}.feed{min-height:180px;padding:18px 15px}.feed h3{font-size:21px}.guide-head{align-items:flex-start}.guide-head-meta{justify-content:flex-start}.guide-layout{gap:14px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step{padding:14px 12px;gap:10px}.step-num{flex-basis:30px;width:30px;height:30px}.step strong{padding-right:0}.visual{padding:15px}.mock-window{min-height:170px}footer{grid-template-columns:1fr 1fr;padding-inline:18px}.footer-brand-block{grid-column:1/-1}}
+    @media(max-width:480px){main{padding-inline:16px}.site-header{padding-inline:10px;gap:8px}.brand{gap:7px}.brand-mark{width:26px;height:26px;flex:0 0 26px}.brand-name{font-size:14px}.header-cta{padding:7px 8px;font-size:11px;gap:5px}.hero{padding-top:50px}.hero h1{font-size:clamp(38px,10.8vw,54px)}.links,.steps{grid-template-columns:1fr}.feed{min-height:150px}.tabs{display:grid;width:100%;grid-template-columns:1fr;gap:3px;border-radius:14px}.tab{width:100%;text-align:center;padding:11px}.guide-head-meta{width:100%;justify-content:space-between}.visual{padding:13px}.mock-window{min-height:150px;padding-top:15px}.step{padding:15px}.step-controls .btn{padding:10px 13px}.callout{line-height:1.65}footer{grid-template-columns:1fr;gap:26px}.footer-brand-block{grid-column:auto}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
   </style>
 </head>
 <body>
@@ -48,7 +88,7 @@
 
     <section class="panel" id="feeds">
       <div class="section-head"><div><div class="section-label">Choose a calendar feed</div><h2>Pick your rotation.</h2></div><p class="section-intro">Pick the combined schedule or subscribe to only your team.</p></div>
-      <div id="feeds" class="links"><p>Loading calendar feeds… If this message remains, run <code>npm run generate</code> and publish the <code>public/</code> folder.</p></div>
+      <div id="feeds-list" class="links"><p>Loading calendar feeds… If this message remains, run <code>npm run generate</code> and publish the <code>public/</code> folder.</p></div>
     </section>
 
     <section class="panel" id="subscribe-guide">
@@ -64,15 +104,15 @@
             <div class="platform-label"><span class="platform-mark" id="platform-mark">G</span><span id="platform-kicker">GOOGLE CALENDAR · WEB</span></div>
             <h3 id="guide-title">Open Google Calendar in your browser</h3>
           </div>
-          <span class="step-count" id="step-count">Step 1 of 5</span>
+          <div class="guide-head-meta"><span class="step-count" id="step-count">Step 1 of 5</span><a class="guide-resource" id="official-guide" href="https://support.google.com/calendar/answer/37118?hl=en&amp;co=GENIE.Platform%3DDesktop" target="_blank" rel="noopener noreferrer">Official guide <span aria-hidden="true">↗</span></a></div>
         </div>
         <div class="guide-layout" style="margin-top:18px">
           <div class="steps" id="step-list" aria-label="Setup steps"></div>
-          <div class="visual">
+          <aside class="visual" aria-label="Visual example of the selected setup step">
             <div class="visual-top"><span id="visual-caption">Illustration · Google Calendar</span><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
             <div class="mock-window" id="mock-window" aria-live="polite"></div>
             <p class="mock-note" id="visual-note">Use the web version of Google Calendar on a computer to add a calendar by URL.</p>
-          </div>
+          </aside>
         </div>
         <div class="step-controls">
           <button class="btn" id="prev-step" type="button" disabled>← Back</button>
@@ -92,31 +132,31 @@
   <script>
     const guides = {
       google: {
-        name: 'Google Calendar', mark: 'G', kicker: 'GOOGLE CALENDAR · WEB', note: 'Google Calendar subscription setup is done in a desktop web browser. The mobile app does not provide the same From URL flow.',
+        name: 'Google Calendar', mark: 'G', kicker: 'GOOGLE CALENDAR · WEB', helpUrl: 'https://support.google.com/calendar/answer/37118?hl=en&co=GENIE.Platform%3DDesktop', note: 'Google Calendar subscription setup is done in a desktop web browser. The mobile app does not provide the same From URL flow.',
         steps: [
           { title: 'Open Google Calendar', desc: 'Use a browser on your computer and sign in.', visual: '<div class="mock-brand"><span class="brand-icon">G</span> Google Calendar</div><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-row"><span>My calendars</span><span>⌄</span></div><div class="mock-row"><span>Other calendars</span><strong>＋</strong></div>', note: 'Open Google Calendar in your browser, not just the mobile app.' },
-          { title: 'Find Other calendars', desc: 'In the left sidebar, locate Other calendars.', visual: '<div class="mock-brand"><span class="brand-icon">G</span> Calendar sidebar</div><div class="mock-row"><span>My calendars</span><span>⌄</span></div><div class="mock-row" style="border-color:var(--green)"><strong>Other calendars</strong><strong style="color:var(--green)">＋</strong></div><div class="mock-line short"></div>', note: 'The plus sign (+) is beside Other calendars in the left panel.' },
-          { title: 'Choose From URL', desc: 'Click +, then select From URL in the menu.', visual: '<div class="mock-brand"><span class="brand-icon">＋</span> Add other calendars</div><div class="mock-row"><span>Subscribe to calendar</span></div><div class="mock-row" style="border-color:var(--green)"><strong>From URL</strong><span>↗</span></div><div class="mock-row"><span>Create new calendar</span></div>', note: 'Choose From URL—not Import, which uploads a one-time copy.' },
+          { title: 'Find Other calendars', desc: 'In the left sidebar, locate Other calendars.', visual: '<div class="mock-brand"><span class="brand-icon">G</span> Calendar sidebar</div><div class="mock-row"><span>My calendars</span><span>⌄</span></div><div class="mock-row" style="border-color:var(--blue)"><strong>Other calendars</strong><strong style="color:var(--blue)">＋</strong></div><div class="mock-line short"></div>', note: 'The plus sign (+) is beside Other calendars in the left panel.' },
+          { title: 'Choose From URL', desc: 'Click +, then select From URL in the menu.', visual: '<div class="mock-brand"><span class="brand-icon">＋</span> Add other calendars</div><div class="mock-row"><span>Subscribe to calendar</span></div><div class="mock-row" style="border-color:var(--blue)"><strong>From URL</strong><span>↗</span></div><div class="mock-row"><span>Create new calendar</span></div>', note: 'Choose From URL—not Import, which uploads a one-time copy.' },
           { title: 'Paste your ICS URL', desc: 'Copy the feed link above and paste it into the calendar URL field.', visual: '<div class="mock-brand"><span class="brand-icon">🔗</span> Add calendar by URL</div><div class="mock-line short"></div><div class="mock-field">https://theaxels.github.io/wfh-calendar/ics/all.ics</div><div class="mock-line" style="width:65%"></div>', note: 'Use the full HTTPS subscription link ending in .ics. Replace this example with your actual published URL.' },
           { title: 'Click Add calendar', desc: 'Confirm by clicking Add calendar. It appears under Other calendars.', visual: '<div class="mock-brand"><span class="brand-icon">✓</span> Add calendar by URL</div><div class="mock-field">…/ics/all.ics</div><span class="mock-button">Add calendar</span><div class="mock-row"><span>✓ WFH Calendar added</span></div>', note: 'Google may take a while to display events or refresh future changes.' }
         ]
       },
       apple: {
-        name: 'Apple Calendar', mark: '●', kicker: 'APPLE CALENDAR · IPHONE / IPAD', note: 'On iPhone, add the public HTTPS feed as a subscribed calendar. Menu names may vary slightly by iOS version.',
+        name: 'Apple Calendar', mark: '●', kicker: 'APPLE CALENDAR · IPHONE / IPAD', helpUrl: 'https://support.apple.com/en-mn/guide/iphone/ipha0d932e96/ios', note: 'On iPhone, add the public HTTPS feed as a subscribed calendar. Menu names may vary slightly by iOS version.',
         steps: [
-          { title: 'Open Settings', desc: 'On your iPhone, open Settings.', visual: '<div class="mock-brand"><span class="brand-icon">⚙</span> Settings</div><div class="mock-row"><span>Wi-Fi</span><span>›</span></div><div class="mock-row"><span>Notifications</span><span>›</span></div><div class="mock-row" style="border-color:var(--green)"><strong>Apps</strong><span>›</span></div>', note: 'On recent iOS versions, Calendar settings are grouped under Apps.' },
-          { title: 'Open Calendar settings', desc: 'Tap Apps → Calendar (or Calendar directly on older iOS versions).', visual: '<div class="mock-brand"><span class="brand-icon">▦</span> Apps</div><div class="mock-row" style="border-color:var(--green)"><strong>Calendar</strong><span>›</span></div><div class="mock-row"><span>Camera</span><span>›</span></div><div class="mock-row"><span>Mail</span><span>›</span></div>', note: 'The exact settings path depends on your iOS version.' },
-          { title: 'Add a calendar account', desc: 'Tap Calendar Accounts → Add Account.', visual: '<div class="mock-brand"><span class="brand-icon">▦</span> Calendar settings</div><div class="mock-row" style="border-color:var(--green)"><strong>Calendar Accounts</strong><span>›</span></div><div class="mock-row"><span>Default Calendar</span><span>›</span></div>', note: 'Choose the account-management option within Calendar settings.' },
-          { title: 'Choose Subscribed Calendar', desc: 'Select Add Account → Other → Add Subscribed Calendar.', visual: '<div class="mock-brand"><span class="brand-icon">＋</span> Add account</div><div class="mock-row"><span>iCloud</span></div><div class="mock-row"><span>Google</span></div><div class="mock-row" style="border-color:var(--green)"><strong>Other → Add Subscribed Calendar</strong></div>', note: 'Choose Subscribed Calendar rather than adding a normal email account.' },
+          { title: 'Open Settings', desc: 'On your iPhone, open Settings.', visual: '<div class="mock-brand"><span class="brand-icon">⚙</span> Settings</div><div class="mock-row"><span>Wi-Fi</span><span>›</span></div><div class="mock-row"><span>Notifications</span><span>›</span></div><div class="mock-row" style="border-color:var(--blue)"><strong>Apps</strong><span>›</span></div>', note: 'On recent iOS versions, Calendar settings are grouped under Apps.' },
+          { title: 'Open Calendar settings', desc: 'Tap Apps → Calendar (or Calendar directly on older iOS versions).', visual: '<div class="mock-brand"><span class="brand-icon">▦</span> Apps</div><div class="mock-row" style="border-color:var(--blue)"><strong>Calendar</strong><span>›</span></div><div class="mock-row"><span>Camera</span><span>›</span></div><div class="mock-row"><span>Mail</span><span>›</span></div>', note: 'The exact settings path depends on your iOS version.' },
+          { title: 'Add a calendar account', desc: 'Tap Calendar Accounts → Add Account.', visual: '<div class="mock-brand"><span class="brand-icon">▦</span> Calendar settings</div><div class="mock-row" style="border-color:var(--blue)"><strong>Calendar Accounts</strong><span>›</span></div><div class="mock-row"><span>Default Calendar</span><span>›</span></div>', note: 'Choose the account-management option within Calendar settings.' },
+          { title: 'Choose Subscribed Calendar', desc: 'Select Add Account → Other → Add Subscribed Calendar.', visual: '<div class="mock-brand"><span class="brand-icon">＋</span> Add account</div><div class="mock-row"><span>iCloud</span></div><div class="mock-row"><span>Google</span></div><div class="mock-row" style="border-color:var(--blue)"><strong>Other → Add Subscribed Calendar</strong></div>', note: 'Choose Subscribed Calendar rather than adding a normal email account.' },
           { title: 'Paste and subscribe', desc: 'Paste the HTTPS .ics URL, tap Next, then Save or Subscribe.', visual: '<div class="mock-brand"><span class="brand-icon">🔗</span> Subscribed Calendar</div><div class="mock-field">https://theaxels.github.io/wfh-calendar/ics/all.ics</div><span class="mock-button">Subscribe</span><div class="mock-row"><span>WFH Calendar</span><strong>✓</strong></div>', note: 'Replace the example with your published feed URL. The subscribed calendar can be managed later in Calendar Accounts.' }
         ]
       },
       outlook: {
-        name: 'Outlook', mark: 'O', kicker: 'OUTLOOK · WEB', note: 'Outlook on the web supports subscribing to a calendar from a web URL. Labels can differ between new Outlook and classic Outlook.',
+        name: 'Outlook', mark: 'O', kicker: 'OUTLOOK · WEB', helpUrl: 'https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web', note: 'Outlook on the web supports subscribing to a calendar from a web URL. Labels can differ between new Outlook and classic Outlook.',
         steps: [
-          { title: 'Open Outlook Calendar', desc: 'Open Outlook on the web and switch to Calendar.', visual: '<div class="mock-brand"><span class="brand-icon">O</span> Outlook Calendar</div><div class="mock-row"><span>Mail</span><span>›</span></div><div class="mock-row" style="border-color:var(--green)"><strong>Calendar</strong><span>▦</span></div><div class="mock-line short"></div>', note: 'Use the Outlook calendar experience associated with your account.' },
-          { title: 'Add a calendar', desc: 'Select Add calendar from the calendar navigation.', visual: '<div class="mock-brand"><span class="brand-icon">▦</span> Calendar</div><div class="mock-row" style="border-color:var(--green)"><strong>＋ Add calendar</strong></div><div class="mock-row"><span>My calendars</span></div><div class="mock-row"><span>Other calendars</span></div>', note: 'The control is usually near the calendar list or navigation.' },
-          { title: 'Choose Subscribe from web', desc: 'Select the option to subscribe from a web URL.', visual: '<div class="mock-brand"><span class="brand-icon">＋</span> Add calendar</div><div class="mock-row"><span>Blank calendar</span></div><div class="mock-row" style="border-color:var(--green)"><strong>Subscribe from web</strong></div><div class="mock-row"><span>Upload from file</span></div>', note: 'Choose subscription from the web, not upload from file, to keep it linked to the feed.' },
+          { title: 'Open Outlook Calendar', desc: 'Open Outlook on the web and switch to Calendar.', visual: '<div class="mock-brand"><span class="brand-icon">O</span> Outlook Calendar</div><div class="mock-row"><span>Mail</span><span>›</span></div><div class="mock-row" style="border-color:var(--blue)"><strong>Calendar</strong><span>▦</span></div><div class="mock-line short"></div>', note: 'Use the Outlook calendar experience associated with your account.' },
+          { title: 'Add a calendar', desc: 'Select Add calendar from the calendar navigation.', visual: '<div class="mock-brand"><span class="brand-icon">▦</span> Calendar</div><div class="mock-row" style="border-color:var(--blue)"><strong>＋ Add calendar</strong></div><div class="mock-row"><span>My calendars</span></div><div class="mock-row"><span>Other calendars</span></div>', note: 'The control is usually near the calendar list or navigation.' },
+          { title: 'Choose Subscribe from web', desc: 'Select the option to subscribe from a web URL.', visual: '<div class="mock-brand"><span class="brand-icon">＋</span> Add calendar</div><div class="mock-row"><span>Blank calendar</span></div><div class="mock-row" style="border-color:var(--blue)"><strong>Subscribe from web</strong></div><div class="mock-row"><span>Upload from file</span></div>', note: 'Choose subscription from the web, not upload from file, to keep it linked to the feed.' },
           { title: 'Enter the ICS URL', desc: 'Paste the public HTTPS URL that ends in .ics.', visual: '<div class="mock-brand"><span class="brand-icon">🔗</span> Subscribe from web</div><div class="mock-field">https://theaxels.github.io/wfh-calendar/ics/all.ics</div><div class="mock-line short"></div>', note: 'Use your actual published link. The address shown here is an example.' },
           { title: 'Name and import', desc: 'Give the calendar a name, choose its color, and confirm the subscription.', visual: '<div class="mock-brand"><span class="brand-icon">✓</span> Calendar options</div><div class="mock-row"><span>Calendar name</span><strong>WFH Calendar</strong></div><div class="mock-row"><span>Color</span><strong>●</strong></div><span class="mock-button">Import / Subscribe</span>', note: 'After subscribing, find the feed in your calendar list. Refresh timing is managed by Outlook.' }
         ]
@@ -133,6 +173,8 @@
       $('guide-content').setAttribute('aria-labelledby', 'tab-'+activePlatform);
       $('platform-mark').textContent = guide.mark;
       $('platform-kicker').textContent = guide.kicker;
+      $('official-guide').href = guide.helpUrl;
+      $('official-guide').setAttribute('aria-label', `Read the official ${guide.name} calendar guide (opens in a new tab)`);
       $('guide-title').textContent = step.title;
       $('step-count').textContent = `Step ${activeStep+1} of ${guide.steps.length}`;
       $('step-progress').textContent = `${activeStep+1} / ${guide.steps.length}`;
@@ -159,7 +201,7 @@
     $('next-step').addEventListener('click', () => { if (activeStep < guides[activePlatform].steps.length-1) { activeStep++; renderGuide(); } });
     renderGuide();
     fetch('./ics/index.json').then(response => { if (!response.ok) throw new Error('Feed index unavailable'); return response.json(); }).then(data => {
-      const root = $('feeds'); root.replaceChildren();
+      const root = $('feeds-list'); root.replaceChildren();
       const entries = [{ label: 'All teams', file: data.combinedFile, count: data.totalEvents }, ...data.teams.map(team => ({ label: team.team, file: team.file, count: team.events }))];
       for (const item of entries) {
         const card = document.createElement('article'); card.className = 'feed' + (item.label === 'All teams' ? ' feed--all' : '');
@@ -178,7 +220,7 @@
         });
         card.append(title, p, link, copy); root.append(card);
       }
-    }).catch(() => { $('feeds').innerHTML = '<p>Feed index not found yet. Run <code>npm run generate</code> and publish the <code>public/</code> folder.</p>'; });
+    }).catch(() => { $('feeds-list').innerHTML = '<p>Feed index not found yet. Run <code>npm run generate</code> and publish the <code>public/</code> folder.</p>'; });
   </script>
 </body>
 </html>
