@@ -1,0 +1,12 @@
+{
+  "name": "public-wfh-calendar-generator",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Configurable public WFH rotation calendar with subscribable ICS feeds",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-ics.mjs",
+    "check": "node --check scripts/generate-ics.mjs && npm run generate"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,34 @@
+{
+  "calendarName": "WFH Calendar",
+  "timezone": "Asia/Jakarta",
+  "year": 2026,
+  "startDate": "2026-10-09",
+  "endDate": "2026-12-31",
+  "startTeam": "Team A",
+  "teams": [
+    "Team A",
+    "Team B",
+    "Team C",
+    "Team D"
+  ],
+  "rotationOrder": [
+    "Team A",
+    "Team B",
+    "Team C",
+    "Team D"
+  ],
+  "eligibleWeekdays": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "holidayPolicy": "skip-without-advancing",
+  "holidays": [
+    "2026-12-25"
+  ],
+  "eventStartTime": "09:00",
+  "eventEndTime": "17:00",
+  "description": "Work From Home day. Check your organization's policy and holiday list."
+}

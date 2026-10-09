@@ -1,0 +1,29 @@
+{
+  "calendarName": "WFH Calendar",
+  "year": "2026",
+  "generatedAt": "2026-10-09T14:41:33.009Z",
+  "totalEvents": 59,
+  "teams": [
+    {
+      "team": "Team A",
+      "events": 15,
+      "file": "team-a-2026.ics"
+    },
+    {
+      "team": "Team B",
+      "events": 15,
+      "file": "team-b-2026.ics"
+    },
+    {
+      "team": "Team C",
+      "events": 15,
+      "file": "team-c-2026.ics"
+    },
+    {
+      "team": "Team D",
+      "events": 14,
+      "file": "team-d-2026.ics"
+    }
+  ],
+  "combinedFile": "2026.ics"
+}
