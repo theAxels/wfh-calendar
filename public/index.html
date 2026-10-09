@@ -223,16 +223,50 @@
       }
     }).catch(() => { $('feeds-list').innerHTML = '<p>Feed index not found yet. Run <code>npm run generate</code> and publish the <code>public/</code> folder.</p>'; });
   </script>
-  <section class="status-bar" aria-label="Holiday and work-hour status">
-    <div class="status-pill">Holiday data verified through 2026 · Last successful sync: 2026-10-10 · Next year awaiting publication.</div>
+  <section class="status-bar" aria-label="Holiday and work-hour status" id="holiday-status">
+    <div class="status-pill" id="holiday-coverage" role="status" aria-live="polite">Loading holiday coverage…</div>
     <div class="status-row">
       <span>Regular hours: 08:30–17:30 WIB</span>
-      <span>Flexi time: clock in 08:30–09:30 WIB, 8 hours total</span>
+      <span>Flexi time: clock in 08:30–09:30 WIB, 8 hours total (latest clock-out 18:30 WIB)</span>
     </div>
-    <div class="scheme-list" aria-label="Employee work-hour scheme badges">
-      <span class="scheme-badge" title="Regular scheme: 08:30 WIB clock-in, 17:30 WIB clock-out, lunch 12:00–13:00.">Regular</span>
-      <span class="scheme-badge scheme-badge--flexi" title="Flexi scheme: clock in anytime between 08:30 and 09:30 WIB; total working time is 8 hours, ending no later than 18:30 WIB.">Flexi</span>
-    </div>
+    <div class="scheme-list" id="scheme-list" aria-label="Employee work-hour schemes"></div>
+    <p class="status-row" id="holiday-source-note">Holiday dates are sourced from the third-party Tanggal Merah API. Official corrections require documented government sources.</p>
   </section>
+  <script>
+    (() => {
+      const coverage = document.getElementById('holiday-coverage');
+      const badges = document.getElementById('scheme-list');
+      const statusDate = value => value ? new Date(value).toISOString().slice(0, 10) : 'not recorded';
+      Promise.all([
+        fetch('./data/holidays/sync-status.json', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error('Holiday status unavailable'); return r.json(); }),
+        fetch('./data/employees.json', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error('Employee schemes unavailable'); return r.json(); })
+      ]).then(([status, employeeData]) => {
+        const year = status.verifiedThrough ? String(status.verifiedThrough).slice(0, 4) : null;
+        const pending = Array.isArray(status.pendingYears) && status.pendingYears.length
+          ? `Pending publication: ${status.pendingYears.join(', ')}.`
+          : (year ? `Next year awaiting publication unless listed by the source.` : 'Holiday coverage is not verified.');
+        const lastSuccess = status.lastSuccess ? statusDate(status.lastSuccess) : 'never';
+        coverage.textContent = `Holiday data coverage through ${status.verifiedThrough || 'unknown'} · Last successful sync: ${lastSuccess} · ${pending}`;
+        coverage.dataset.status = status.status || 'unknown';
+        if (status.status === 'error' || status.errors?.length) coverage.title = `Latest sync reported errors: ${status.errors.map(e => e.message).join('; ')}`;
+        badges.replaceChildren();
+        const employees = Array.isArray(employeeData.employees) ? employeeData.employees : [];
+        for (const employee of employees) {
+          const scheme = employee.scheme || (employee.flexi ? 'flexi' : employeeData.defaultScheme || 'regular');
+          const flexi = scheme === 'flexi';
+          const badge = document.createElement('span');
+          badge.className = 'scheme-badge' + (flexi ? ' scheme-badge--flexi' : '');
+          badge.textContent = `${employee.name} · ${flexi ? 'Flexi' : 'Regular'}`;
+          badge.title = flexi
+            ? 'Flexi: clock in between 08:30 and 09:30 WIB; clock out 8 hours after clock-in, no later than 18:30 WIB. ICS uses the full 08:30–18:30 availability window.'
+            : 'Regular: clock in 08:30 WIB, clock out 17:30 WIB; lunch break 12:00–13:00 WIB.';
+          badges.append(badge);
+        }
+      }).catch(() => {
+        coverage.textContent = 'Holiday coverage status unavailable · Check the published sync-status.json before relying on future dates.';
+        coverage.dataset.status = 'error';
+      });
+    })();
+  </script>
 </body>
 </html>
