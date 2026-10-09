@@ -1,0 +1,36 @@
+name: Holiday data correction
+description: Report a potential Indonesian holiday or collective-leave date correction.
+title: "[Holiday correction]: YYYY-MM-DD"
+labels: ["holiday-data"]
+body:
+  - type: input
+    id: date
+    attributes:
+      label: Affected date (YYYY-MM-DD)
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current cached/API value
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed correction
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Exact official announcement URL
+      description: Link to the relevant decree or official announcement, not just a homepage.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Reason and supporting context
+    validations:
+      required: true
