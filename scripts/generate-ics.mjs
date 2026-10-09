@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TZID = 'Asia/Jakarta';
-const DEFAULT_EMPLOYEES = { defaultScheme: 'regular', timezone: TZID, employees: [] };
 
 export function isIsoDate(value) {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -65,9 +64,13 @@ export function getLatestVerifiedDate(rootDir = ROOT, startDate = null) {
   return `${year}-12-31`;
 }
 
-function eventWindow(scheme) {
-  if (scheme === 'flexi') return { start: '08:30', end: '18:30', summary: 'Flexi 08:30–09:30 → +8h', description: 'Clock in 08:30–09:30 WIB · Clock out 8h after clock-in (latest 18:30 WIB) · Lunch 12:00–13:00 WIB. Calendar boundary intentionally uses the full 08:30–18:30 availability window.' };
-  return { start: '08:30', end: '17:30', summary: 'Regular 08:30–17:30', description: 'Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13:00 WIB.' };
+function eventWindow() {
+  return {
+    start: '08:30',
+    end: '17:30',
+    summary: 'Regular 08:30–17:30',
+    description: 'Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13:00 WIB.'
+  };
 }
 function escapeText(value) {
   return String(value ?? '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
@@ -88,13 +91,13 @@ function timezoneBlock() {
 export function makeCalendar(name, events, config) {
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//theAxels//wfh-calendar//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', `X-WR-CALNAME:${escapeText(name)}`, `X-WR-TIMEZONE:${TZID}`, ...timezoneBlock()];
   for (const event of events) {
-    const window = eventWindow(event.scheme);
+    const window = eventWindow();
     lines.push('BEGIN:VEVENT',
       `UID:${event.date}-${slug(event.name)}-${slug(event.team)}@theaxels.github.io`,
       `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}`,
       `DTSTART;TZID=${TZID}:${localDateTime(event.date, window.start)}`,
       `DTEND;TZID=${TZID}:${localDateTime(event.date, window.end)}`,
-      `SUMMARY:${escapeText(`WFH — ${event.name} (${window.summary})`)}`,
+      `SUMMARY:${escapeText(`WFH — ${event.team} (${window.summary})`)}`,
       `DESCRIPTION:${escapeText(`${window.description} Team: ${event.team}. Holiday dates are skipped without advancing the team rotation.`)}`,
       `CATEGORIES:${escapeText(event.team)},WFH`,
       'END:VEVENT');
@@ -126,18 +129,6 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
   assert(isIsoDate(config.startDate), 'startDate must be a valid YYYY-MM-DD date.');
   assert(Array.isArray(config.eligibleWeekdays) && config.eligibleWeekdays.every(day => Number.isInteger(day) && day >= 0 && day <= 6), 'eligibleWeekdays must contain weekday numbers.');
 
-  const employeeFile = path.join(rootDir, 'data', 'employees.json');
-  const employeeConfig = readJson(employeeFile, DEFAULT_EMPLOYEES);
-  assert(Array.isArray(employeeConfig.employees), 'data/employees.json must contain employees array.');
-  const defaultScheme = employeeConfig.defaultScheme ?? 'regular';
-  const employees = employeeConfig.employees.map(employee => {
-    const scheme = employee.scheme ?? (employee.flexi ? 'flexi' : defaultScheme);
-    assert(typeof employee.name === 'string' && employee.name.trim(), 'Every employee must have a name.');
-    assert(config.teams.includes(employee.team), `Employee ${employee.name} references unknown team ${employee.team}.`);
-    assert(['regular', 'flexi'].includes(scheme), `Employee ${employee.name} has invalid scheme ${scheme}.`);
-    return { ...employee, scheme };
-  });
-
   const { years: holidayYears, holidays: holidayMap } = loadHolidayData(rootDir);
   const startYear = Number(config.startDate.slice(0, 4));
   assert(holidayYears.has(startYear), `Missing holiday cache for start year ${startYear}; refusing to publish.`);
@@ -158,7 +149,7 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
     rotationIndex = (rotationIndex + 1) % config.rotationOrder.length;
   }
 
-  const events = teamEvents.flatMap(day => employees.filter(employee => employee.team === day.team).map(employee => ({ date: day.date, team: day.team, name: employee.name, scheme: employee.scheme })));
+  const events = teamEvents;
   fs.mkdirSync(outputDir, { recursive: true });
   const allName = `${config.calendarName} — All Teams`;
   const stableFiles = [{ team: 'All teams', file: 'all.ics', events: events.length }];
@@ -193,14 +184,12 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
     stable: { combinedFile: 'all.ics', teams: stableFiles }, year: lastYear,
     combinedFile: 'all.ics', teams: stableFiles, annualFeeds,
     holidayCoverage: { requestedEndDate, coveredThrough: effectiveEndDate, latestVerifiedDate, capped: effectiveEndDate < requestedEndDate, lastCheck: status.lastCheck ?? null, lastSuccess: status.lastSuccess ?? null, availableYears: status.availableYears ?? [], pendingYears: status.pendingYears ?? [] },
-    employees: employees.map(({ name, team, scheme }) => ({ name, team, scheme }))
   };
   fs.writeFileSync(path.join(outputDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\\n`);
   // Publish the exact status and scheme data consumed by the static website.
   const publicDataDir = path.join(path.dirname(outputDir), 'data');
   fs.mkdirSync(path.join(publicDataDir, 'holidays'), { recursive: true });
   fs.copyFileSync(path.join(rootDir, 'data', 'holidays', 'sync-status.json'), path.join(publicDataDir, 'holidays', 'sync-status.json'));
-  fs.copyFileSync(employeeFile, path.join(publicDataDir, 'employees.json'));
   return { events, startDate: config.startDate, endDate: effectiveEndDate, requestedEndDate, stableFiles, annualFeeds };
 }
 
