@@ -196,6 +196,11 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
     employees: employees.map(({ name, team, scheme }) => ({ name, team, scheme }))
   };
   fs.writeFileSync(path.join(outputDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\\n`);
+  // Publish the exact status and scheme data consumed by the static website.
+  const publicDataDir = path.join(path.dirname(outputDir), 'data');
+  fs.mkdirSync(path.join(publicDataDir, 'holidays'), { recursive: true });
+  fs.copyFileSync(path.join(rootDir, 'data', 'holidays', 'sync-status.json'), path.join(publicDataDir, 'holidays', 'sync-status.json'));
+  fs.copyFileSync(employeeFile, path.join(publicDataDir, 'employees.json'));
   return { events, startDate: config.startDate, endDate: effectiveEndDate, requestedEndDate, stableFiles, annualFeeds };
 }
 
