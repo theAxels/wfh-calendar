@@ -35,9 +35,9 @@ With `endDateMode: "rolling"`, the requested end date is December 31 of the curr
 
 ## Public holidays — important
 
-Holiday dates are never inferred from weekdays or silently treated as complete. The recommended `holidaySource.mode: "tanggalmerah-api"` fetches Indonesian national holidays (`holiday`) and collective leave (`leave`) from Tanggal Merah API. The generator checks `/api/years` and caps the calendar at the latest consecutive year with published data. As later years become available, the scheduled GitHub Actions workflow extends the same stable URLs automatically. If the API fails or returns invalid data, generation stops instead of publishing a calendar with potentially missing holidays.
+Holiday dates are never inferred from weekdays or silently treated as complete. The recommended `holidaySource.mode: "tanggalmerah-api"` is consumed by `scripts/sync-holidays.mjs`, not by the generator. The sync workflow discovers `/api/years`, fetches each new or forced year, validates the response, and stores last-known-good cache files in `data/holidays/YYYY.json`. `scripts/generate-ics.mjs` reads only those local files and caps feeds at the latest consecutive cached year. If the API fails or returns invalid data, the cache is preserved and the workflow fails; a missing year is never assumed to contain zero holidays.
 
-For a custom hosted JSON holiday source, use:
+The currently implemented sync script uses Tanggal Merah API. The custom JSON and manual modes below describe the broader configuration format; do not select those modes unless the corresponding sync implementation has been added and tested. For a custom hosted JSON holiday source, use:
 
 ```json
 "holidaySource": {

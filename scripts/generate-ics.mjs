@@ -48,7 +48,7 @@ export function loadHolidayData(rootDir = ROOT) {
     assert(item && isIsoDate(item.date) && typeof item.name === 'string' && item.name.trim(), 'Invalid holiday override.');
     assert(['national', 'collective_leave'].includes(item.type), `Invalid override type for ${item.date}`);
     for (const key of ['sourceUrl', 'reason', 'verifiedBy', 'verifiedAt']) assert(typeof item[key] === 'string' && item[key].trim(), `Override ${item.date} missing ${key}`);
-    assert(/^https:\\/\\//i.test(item.sourceUrl), `Override ${item.date} must have an HTTPS source.`);
+    assert(/^https:\/\//i.test(item.sourceUrl), `Override ${item.date} must have an HTTPS source.`);
     holidays.set(item.date, { ...item, source: item.sourceUrl });
   }
   return { years, holidays };
@@ -185,7 +185,7 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
     combinedFile: 'all.ics', teams: stableFiles, annualFeeds,
     holidayCoverage: { requestedEndDate, coveredThrough: effectiveEndDate, latestVerifiedDate, capped: effectiveEndDate < requestedEndDate, lastCheck: status.lastCheck ?? null, lastSuccess: status.lastSuccess ?? null, availableYears: status.availableYears ?? [], pendingYears: status.pendingYears ?? [] },
   };
-  fs.writeFileSync(path.join(outputDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\\n`);
+  fs.writeFileSync(path.join(outputDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\n`);
   // Publish the exact status and scheme data consumed by the static website.
   const publicDataDir = path.join(path.dirname(outputDir), 'data');
   fs.mkdirSync(path.join(publicDataDir, 'holidays'), { recursive: true });

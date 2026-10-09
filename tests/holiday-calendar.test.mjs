@@ -132,7 +132,7 @@ test('sync failure summary exposes errors for GitHub Actions to fail the job', a
 test('cache files cannot imply coverage across a missing year', () => {
   const rootDir = tempRoot(); writeYear(rootDir, 2026); writeYear(rootDir, 2028);
   fs.writeFileSync(path.join(rootDir, 'config', 'wfh.config.json'), JSON.stringify({ startDate: '2026-01-01' }));
-  assert.equal(requireLatestDate(rootDir), null);
+  assert.equal(requireLatestDate(rootDir), '2026-12-31');
   fs.rmSync(rootDir, { recursive: true, force: true });
 });
 function requireLatestDate(rootDir) {

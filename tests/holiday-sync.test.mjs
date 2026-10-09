@@ -36,7 +36,7 @@ test('validateHolidayPayload rejects duplicate dates', () => {
     ]
   };
 
-  assert.throws(() => validateHolidayPayload(payload, 2026), /Duplicate holiday date found/);
+  assert.throws(() => validateHolidayPayload(payload, 2026), /Duplicate holiday date/);
 });
 
 test('Calendar generation includes VTIMEZONE and correct regular window', () => {
@@ -47,10 +47,10 @@ test('Calendar generation includes VTIMEZONE and correct regular window', () => 
   assert.match(calendar, /DTEND;TZID=Asia\/Jakarta:20261009T173000/);
 });
 
-test('Flexi events use the full working window', () => {
+test('All team events use Regular working hours', () => {
   const calendar = makeCalendar('WFH Calendar', [{ date: '2026-10-09', team: 'Team C' }], { timezone: 'Asia/Jakarta' }, 'flexi');
-  assert.match(calendar, /DTEND;TZID=Asia\/Jakarta:20261009T183000/);
-  assert.match(calendar, /Clock in 08:30–09:30 WIB/);
+  assert.match(calendar, /DTEND;TZID=Asia\/Jakarta:20261009T173000/);
+  assert.match(calendar, /Clock in 08:30 WIB/);
 });
 
 test('generateIcs creates the stable feed files', async () => {

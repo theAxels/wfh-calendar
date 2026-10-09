@@ -34,11 +34,12 @@ See [docs/CONFIGURATION.md](docs/CONFIGURATION.md) for fixed/rolling horizons, d
 
 ## Public holiday data
 
-The default configuration uses [Tanggal Merah API](https://upset.dev/tanggalmerah) to fetch Indonesian national holidays and collective leave days. The generator validates the API response and only generates through the latest consecutive year returned by `/api/years`; it refuses to publish if the API is unavailable or the data is invalid. This avoids stale manual holiday lists and prevents unverified future-year feeds from remaining published. The generator also supports a custom HTTPS JSON source (`mode: "json-url"`) or explicit manual dates (`mode: "manual"`) if you prefer to maintain the data yourself.
+The sync script uses the public [Tanggal Merah API](https://upset.dev/tanggalmerah) to discover published years and validate national holidays and collective leave. It stores last-known-good data in `data/holidays/YYYY.json`. The calendar generator reads only this local cache and never calls the API directly. Generated feeds stop at the latest consecutive cached year; a missing year is never treated as holiday-free. The API is a third-party source, not an official government source, and automated validation does not certify its dates.
 
 ## GitHub Actions
 
-- `Generate WFH calendars` runs monthly and can be started manually. It commits updated stable and annual feeds when files change.
+- `Sync holiday cache` runs weekly and can be started manually. It validates and commits cache/status updates and regenerates the stable feeds after successful syncs.
+- `CI` runs syntax/generation checks and tests for pushes and pull requests.
 - `Deploy calendar feeds to GitHub Pages` publishes the `public/` directory.
 
 Ensure GitHub Pages is configured to use **GitHub Actions** as its build/deployment source. Subscribe using the HTTPS feed URLs, not a downloaded `.ics` file, to receive updates when your calendar app refreshes its subscription.
@@ -51,7 +52,7 @@ Ensure GitHub Pages is configured to use **GitHub Actions** as its build/deploym
 
 ## Holiday sync system
 
-The repository synchronizes its local holiday cache from the public Tanggal Merah API and stores the last known-good data under `data/holidays/*.json`. The workflow runs weekly and can also be triggered manually. It validates every dataset before accepting it and refuses to extend future-year calendars when the API has not yet published the corresponding data.
+The weekly workflow discovers years from the Tanggal Merah API, validates each new or forced year, and stores last-known-good datasets under `data/holidays/YYYY.json`. The generator reads local files only. Invalid responses do not replace a valid cached year. If a future year is not published, the calendar ends at the last consecutive cached year; missing years are never assumed to have zero holidays.
 
 ## Working hours
 
