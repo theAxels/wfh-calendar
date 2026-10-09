@@ -1,0 +1,17 @@
+{
+  "lastCheck": "2026-10-09T18:11:12.857Z",
+  "lastSuccess": "2026-10-09T18:11:13.833Z",
+  "availableYears": [
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "verifiedThrough": "2026-12-31",
+  "errors": [],
+  "coverage": "2026",
+  "status": "verified",
+  "pendingYears": [
+    2027
+  ]
+}
