@@ -65,7 +65,7 @@ test('API outage preserves last-known-good cache and returns failure', async () 
 test('missing API years remain pending rather than having zero holidays assumed', async () => {
   const rootDir = tempRoot(); writeYear(rootDir, 2026);
   const result = await syncHolidays({ rootDir, baseUrl: 'https://example.test', fetchImpl: async () => new Response(JSON.stringify({ data: [2026] }), { status: 200 }), retries: 0 });
-  assert.deepEqual(result.pendingYears, []);
+  assert.deepEqual(result.pendingYears, [2027]);
   assert.equal(result.verifiedThrough, '2026-12-31');
   fs.rmSync(rootDir, { recursive: true, force: true });
 });
