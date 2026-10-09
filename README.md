@@ -1,84 +1,50 @@
-# Public WFH Calendar Generator
+# WFH Calendar Generator
 
-A small, dependency-free Node.js project that generates public iCalendar (`.ics`) feeds for a rotating Work From Home schedule. Publish the `public/` directory with GitHub Pages and subscribe from Apple Calendar, Google Calendar, or Outlook.
+A configurable WFH rotation calendar with stable, subscribable ICS feeds, a GitHub Pages guide, and automated regeneration.
 
-## Default rules
+**Live site:** https://theaxels.github.io/wfh-calendar/
 
-- Teams: Team A, Team B, Team C, Team D
-- Rotation: A → B → C → D → A
-- Anchor: Team A on Friday, 9 October 2026
-- Eligible days: Monday–Friday
-- Holidays: dates listed in `holidays` are skipped **without advancing the rotation**
-- Default range: 9 October–31 December 2026
-- Time zone: `Asia/Jakarta`, event hours 09:00–17:00
+## Stable calendar subscription URLs
 
-The rotation advances only when a date is both an eligible weekday and not listed as a holiday. Because `startDate` is the anchor date in this configuration, Team A is assigned on 2026-10-09.
+Subscribe once to these stable URLs; their contents are regenerated as the horizon moves forward:
 
-## Configure for another organization
+- All teams: `https://theaxels.github.io/wfh-calendar/ics/all.ics`
+- Team A: `https://theaxels.github.io/wfh-calendar/ics/team-a.ics`
+- Team B: `https://theaxels.github.io/wfh-calendar/ics/team-b.ics`
+- Team C: `https://theaxels.github.io/wfh-calendar/ics/team-c.ics`
+- Team D: `https://theaxels.github.io/wfh-calendar/ics/team-d.ics`
 
-Edit [`config/wfh.config.json`](config/wfh.config.json):
+If you add or rename teams, the generator creates a stable feed for each configured team. Existing year-specific feeds are also generated for backward compatibility.
 
-- `calendarName`: organization/calendar label
-- `timezone`: IANA time zone, e.g. `Asia/Jakarta` or `America/New_York`
-- `year`, `startDate`, `endDate`: output year and inclusive date range
-- `startTeam`: team assigned on the first eligible date on/after `startDate`
-- `teams` and `rotationOrder`: team names and rotation sequence (must use names from `teams`)
-- `eligibleWeekdays`: JavaScript weekday numbers (`0` Sunday through `6` Saturday); default `[1,2,3,4,5]`
-- `holidays`: explicit ISO dates (`YYYY-MM-DD`) to skip, e.g. `[`"`2026-12-25`"` , `"2027-01-01"` ]` (remove the backticks when editing JSON)
-- `eventStartTime`, `eventEndTime`: local wall-clock event hours in `HH:mm`
-- `description`: event description
+## Generate locally
 
-**Holiday calendar note:** holidays are intentionally supplied as dates in the config. No country-specific holiday source is fetched automatically, so teams should verify and maintain the list for their location. If a holiday falls on a weekend it has no additional effect.
+Requires Node.js 20 or newer.
 
-## Run locally
-
-Requires Node.js 20 or newer; no npm dependencies are needed.
-
-```sh
+```bash
 npm run generate
 ```
 
-Generated files appear in `public/ics/`:
+This writes the `.ics` files and `public/ics/index.json`. The website reads that manifest to show feed links and event counts. The default horizon ends on December 31 five years after the current UTC year. Rotation continues across January 1 and does not reset annually.
 
-- `2026.ics` — all teams' WFH events
-- `team-a-2026.ics`, `team-b-2026.ics`, etc. — one feed per team
-- `index.json` — feed directory used by the landing page
+## Configure the rotation
 
-To use another config/output path:
+Edit `config/wfh.config.json`. `startTeam` is assigned to the first eligible weekday on or after `startDate`. `rotationOrder` determines the repeating sequence. Weekends and listed public holidays are skipped without advancing the team pointer.
 
-```sh
-node scripts/generate-ics.mjs ./config/wfh.config.json ./public/ics
-```
+See [docs/CONFIGURATION.md](docs/CONFIGURATION.md) for fixed/rolling horizons, dynamic teams, and holiday source settings.
 
-## Publish as a public GitHub repository
+## Public holiday data
 
-1. Create a new **public** repository on GitHub (for example, `wfh-calendar`).
-2. Upload/commit the contents of this project to its `main` branch.
-3. Open **Settings → Pages** and set the build/deployment source to **GitHub Actions**.
-4. Open **Actions** and allow workflows if GitHub asks. Run **Generate WFH calendars** once if needed.
-5. After `Deploy calendar feeds to GitHub Pages` succeeds, the site is available at `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
-6. The combined feed URL will be `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/ics/2026.ics`; team feeds follow the pattern `.../ics/team-a-2026.ics`.
+The default mode is explicit/manual. It honors only dates in `holidays` and prints a warning so maintainers know the list needs updates. For automated holiday data, configure a trusted HTTPS JSON endpoint with `holidaySource.mode: "json-url"`. If a configured remote source fails or returns invalid data, generation stops instead of publishing a potentially incorrect calendar. Review the source and its coverage before enabling it.
 
-The generation workflow reruns after config/script changes, on manual dispatch, and monthly. It commits regenerated files; the Pages workflow then deploys them. For organizations needing a different refresh cadence, edit `.github/workflows/generate-calendar.yml`.
+## GitHub Actions
 
-### If Actions cannot push generated files
+- `Generate WFH calendars` runs monthly and can be started manually. It commits updated stable and annual feeds when files change.
+- `Deploy calendar feeds to GitHub Pages` publishes the `public/` directory.
 
-Check **Settings → Actions → General → Workflow permissions** and allow read/write repository permissions. This is needed because the generator workflow commits the generated ICS files.
+Ensure GitHub Pages is configured to use **GitHub Actions** as its build/deployment source. Subscribe using the HTTPS feed URLs, not a downloaded `.ics` file, to receive updates when your calendar app refreshes its subscription.
 
-## Subscribe to feeds
+## Notes
 
-Use the final HTTPS URL after publishing—not a local file path or a GitHub `blob` page URL.
-
-- **iPhone / Apple Calendar:** Settings → Apps → Calendar → Calendar Accounts → Add Account → Other → Add Subscribed Calendar. Paste the HTTPS `.ics` URL, then save.
-- **Google Calendar:** open Google Calendar on the web → Other calendars → `+` → From URL → paste the HTTPS `.ics` URL.
-- **Outlook:** Add calendar → Subscribe from web → paste the HTTPS `.ics` URL.
-
-Calendar clients decide how often to refresh subscribed feeds. Updates may be delayed by the client and are not guaranteed to appear instantly. If you only open/download an ICS file and import it, that is a one-time import, not a subscription.
-
-## Security and privacy
-
-Everything in a public repository and its published feeds is public. Use team labels, not employee names, and never include confidential information. This project does not use an API, server, database, tracking, or secrets.
-
-## License
-
-MIT. See [`LICENSE`](LICENSE).
+- ICS feeds are public. Do not include private employee names or confidential information.
+- Refresh timing is controlled by each calendar provider; a stable URL does not guarantee an immediate refresh.
+- The generated feed contains timed events using the configured IANA timezone.

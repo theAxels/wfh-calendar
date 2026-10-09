@@ -1,29 +1,90 @@
 {
   "calendarName": "WFH Calendar",
-  "year": "2026",
-  "generatedAt": "2026-10-09T15:14:45.240Z",
-  "totalEvents": 59,
+  "generatedAt": "2026-10-09T15:48:30.218Z",
+  "startDate": "2026-10-09",
+  "endDate": "2031-12-31",
+  "timezone": "Asia/Jakarta",
+  "totalEvents": 1363,
+  "stable": {
+    "combinedFile": "all.ics",
+    "teams": [
+      {
+        "team": "Team A",
+        "events": 341,
+        "file": "team-a.ics"
+      },
+      {
+        "team": "Team B",
+        "events": 341,
+        "file": "team-b.ics"
+      },
+      {
+        "team": "Team C",
+        "events": 341,
+        "file": "team-c.ics"
+      },
+      {
+        "team": "Team D",
+        "events": 340,
+        "file": "team-d.ics"
+      }
+    ]
+  },
+  "year": 2031,
+  "combinedFile": "all.ics",
   "teams": [
     {
       "team": "Team A",
-      "events": 15,
-      "file": "team-a-2026.ics"
+      "events": 341,
+      "file": "team-a.ics"
     },
     {
       "team": "Team B",
-      "events": 15,
-      "file": "team-b-2026.ics"
+      "events": 341,
+      "file": "team-b.ics"
     },
     {
       "team": "Team C",
-      "events": 15,
-      "file": "team-c-2026.ics"
+      "events": 341,
+      "file": "team-c.ics"
     },
     {
       "team": "Team D",
-      "events": 14,
-      "file": "team-d-2026.ics"
+      "events": 340,
+      "file": "team-d.ics"
     }
   ],
-  "combinedFile": "2026.ics"
+  "annualFeeds": [
+    {
+      "year": 2026,
+      "file": "2026.ics",
+      "events": 59
+    },
+    {
+      "year": 2027,
+      "file": "2027.ics",
+      "events": 261
+    },
+    {
+      "year": 2028,
+      "file": "2028.ics",
+      "events": 260
+    },
+    {
+      "year": 2029,
+      "file": "2029.ics",
+      "events": 261
+    },
+    {
+      "year": 2030,
+      "file": "2030.ics",
+      "events": 261
+    },
+    {
+      "year": 2031,
+      "file": "2031.ics",
+      "events": 261
+    }
+  ],
+  "holidaySourceMode": "manual"
 }

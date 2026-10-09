@@ -1,0 +1,660 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Axel Studio//WFH Calendar Generator 2.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:WFH Calendar 2030 — Team D
+X-WR-TIMEZONE:Asia/Jakarta
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2030-01-03-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300103T090000
+DTEND;TZID=Asia/Jakarta:20300103T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-01-09-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300109T090000
+DTEND;TZID=Asia/Jakarta:20300109T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-01-15-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300115T090000
+DTEND;TZID=Asia/Jakarta:20300115T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-01-21-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300121T090000
+DTEND;TZID=Asia/Jakarta:20300121T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-01-25-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300125T090000
+DTEND;TZID=Asia/Jakarta:20300125T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-01-31-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300131T090000
+DTEND;TZID=Asia/Jakarta:20300131T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-02-06-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300206T090000
+DTEND;TZID=Asia/Jakarta:20300206T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-02-12-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300212T090000
+DTEND;TZID=Asia/Jakarta:20300212T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-02-18-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300218T090000
+DTEND;TZID=Asia/Jakarta:20300218T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-02-22-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300222T090000
+DTEND;TZID=Asia/Jakarta:20300222T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-02-28-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300228T090000
+DTEND;TZID=Asia/Jakarta:20300228T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-03-06-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300306T090000
+DTEND;TZID=Asia/Jakarta:20300306T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-03-12-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300312T090000
+DTEND;TZID=Asia/Jakarta:20300312T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-03-18-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300318T090000
+DTEND;TZID=Asia/Jakarta:20300318T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-03-22-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300322T090000
+DTEND;TZID=Asia/Jakarta:20300322T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-03-28-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300328T090000
+DTEND;TZID=Asia/Jakarta:20300328T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-04-03-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300403T090000
+DTEND;TZID=Asia/Jakarta:20300403T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-04-09-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300409T090000
+DTEND;TZID=Asia/Jakarta:20300409T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-04-15-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300415T090000
+DTEND;TZID=Asia/Jakarta:20300415T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-04-19-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300419T090000
+DTEND;TZID=Asia/Jakarta:20300419T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-04-25-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300425T090000
+DTEND;TZID=Asia/Jakarta:20300425T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-05-01-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300501T090000
+DTEND;TZID=Asia/Jakarta:20300501T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-05-07-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300507T090000
+DTEND;TZID=Asia/Jakarta:20300507T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-05-13-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300513T090000
+DTEND;TZID=Asia/Jakarta:20300513T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-05-17-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300517T090000
+DTEND;TZID=Asia/Jakarta:20300517T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-05-23-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300523T090000
+DTEND;TZID=Asia/Jakarta:20300523T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-05-29-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300529T090000
+DTEND;TZID=Asia/Jakarta:20300529T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-06-04-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300604T090000
+DTEND;TZID=Asia/Jakarta:20300604T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-06-10-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300610T090000
+DTEND;TZID=Asia/Jakarta:20300610T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-06-14-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300614T090000
+DTEND;TZID=Asia/Jakarta:20300614T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-06-20-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300620T090000
+DTEND;TZID=Asia/Jakarta:20300620T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-06-26-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300626T090000
+DTEND;TZID=Asia/Jakarta:20300626T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-07-02-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300702T090000
+DTEND;TZID=Asia/Jakarta:20300702T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-07-08-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300708T090000
+DTEND;TZID=Asia/Jakarta:20300708T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-07-12-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300712T090000
+DTEND;TZID=Asia/Jakarta:20300712T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-07-18-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300718T090000
+DTEND;TZID=Asia/Jakarta:20300718T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-07-24-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300724T090000
+DTEND;TZID=Asia/Jakarta:20300724T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-07-30-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300730T090000
+DTEND;TZID=Asia/Jakarta:20300730T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-08-05-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300805T090000
+DTEND;TZID=Asia/Jakarta:20300805T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-08-09-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300809T090000
+DTEND;TZID=Asia/Jakarta:20300809T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-08-15-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300815T090000
+DTEND;TZID=Asia/Jakarta:20300815T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-08-21-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300821T090000
+DTEND;TZID=Asia/Jakarta:20300821T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-08-27-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300827T090000
+DTEND;TZID=Asia/Jakarta:20300827T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-09-02-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300902T090000
+DTEND;TZID=Asia/Jakarta:20300902T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-09-06-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300906T090000
+DTEND;TZID=Asia/Jakarta:20300906T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-09-12-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300912T090000
+DTEND;TZID=Asia/Jakarta:20300912T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-09-18-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300918T090000
+DTEND;TZID=Asia/Jakarta:20300918T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-09-24-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300924T090000
+DTEND;TZID=Asia/Jakarta:20300924T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-09-30-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20300930T090000
+DTEND;TZID=Asia/Jakarta:20300930T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-10-04-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301004T090000
+DTEND;TZID=Asia/Jakarta:20301004T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-10-10-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301010T090000
+DTEND;TZID=Asia/Jakarta:20301010T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-10-16-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301016T090000
+DTEND;TZID=Asia/Jakarta:20301016T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-10-22-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301022T090000
+DTEND;TZID=Asia/Jakarta:20301022T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-10-28-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301028T090000
+DTEND;TZID=Asia/Jakarta:20301028T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-11-01-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301101T090000
+DTEND;TZID=Asia/Jakarta:20301101T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-11-07-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301107T090000
+DTEND;TZID=Asia/Jakarta:20301107T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-11-13-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301113T090000
+DTEND;TZID=Asia/Jakarta:20301113T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-11-19-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301119T090000
+DTEND;TZID=Asia/Jakarta:20301119T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-11-25-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301125T090000
+DTEND;TZID=Asia/Jakarta:20301125T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-11-29-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301129T090000
+DTEND;TZID=Asia/Jakarta:20301129T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-12-05-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301205T090000
+DTEND;TZID=Asia/Jakarta:20301205T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-12-11-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301211T090000
+DTEND;TZID=Asia/Jakarta:20301211T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-12-17-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301217T090000
+DTEND;TZID=Asia/Jakarta:20301217T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-12-23-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301223T090000
+DTEND;TZID=Asia/Jakarta:20301223T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-12-27-team-d@wfh-calendar-generator
+DTSTAMP:20261009T154830Z
+DTSTART;TZID=Asia/Jakarta:20301227T090000
+DTEND;TZID=Asia/Jakarta:20301227T170000
+SUMMARY:Team D — WFH
+DESCRIPTION:Work From Home day. Check your organization's policy and holi
+ day list.
+CATEGORIES:Team D,WFH
+END:VEVENT
+END:VCALENDAR
