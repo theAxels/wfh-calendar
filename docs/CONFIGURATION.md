@@ -14,8 +14,8 @@ Edit `config/wfh.config.json`, then run `npm run generate`.
   "rotationOrder": ["Team A", "Team B", "Team C", "Team D"],
   "eligibleWeekdays": [1, 2, 3, 4, 5],
   "holidayPolicy": "skip-without-advancing",
-  "holidaySource": { "mode": "manual" },
-  "holidays": ["2026-12-25"],
+  "holidaySource": { "mode": "tanggalmerah-api", "baseUrl": "https://tanggalmerah.upset.dev", "timeoutMs": 10000 },
+  "holidays": [],
   "eventStartTime": "09:00",
   "eventEndTime": "17:00",
   "description": "Work From Home day."
@@ -33,13 +33,13 @@ The generator also retains year-specific feeds such as `2026.ics` and `team-a-20
 
 ## Rolling horizon
 
-With `endDateMode: "rolling"`, the end date is December 31 of the current UTC year plus `rollingYearsAhead`. Set `rollingYearsAhead` from 1 to 15. For a fixed end date, use `endDateMode: "fixed"` and provide `endDate: "YYYY-MM-DD"`.
+With `endDateMode: "rolling"`, the requested end date is December 31 of the current UTC year plus `rollingYearsAhead`. Set `rollingYearsAhead` from 1 to 15. When `tanggalmerah-api` is enabled, the actual generated end date is capped at the latest consecutive year with published holiday data; the manifest records both the requested and actual coverage. For a fixed end date, use `endDateMode: "fixed"` and provide `endDate: "YYYY-MM-DD"` (API coverage can still cap the effective date).
 
 ## Public holidays — important
 
-Holiday dates are never inferred from weekdays or silently treated as complete. The default `holidaySource.mode: "manual"` uses only the ISO dates in `holidays` and prints a visible warning on every generation. Maintain the list for the full generated date range.
+Holiday dates are never inferred from weekdays or silently treated as complete. The recommended `holidaySource.mode: "tanggalmerah-api"` fetches Indonesian national holidays (`holiday`) and collective leave (`leave`) from Tanggal Merah API. The generator checks `/api/years` and caps the calendar at the latest consecutive year with published data. As later years become available, the scheduled GitHub Actions workflow extends the same stable URLs automatically. If the API fails or returns invalid data, generation stops instead of publishing a calendar with potentially missing holidays.
 
-For a hosted JSON holiday source, use:
+For a custom hosted JSON holiday source, use:
 
 ```json
 "holidaySource": {

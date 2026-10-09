@@ -1,56 +1,56 @@
 {
   "calendarName": "WFH Calendar",
-  "generatedAt": "2026-10-09T15:48:30.218Z",
+  "generatedAt": "2026-10-09T16:04:34.986Z",
   "startDate": "2026-10-09",
-  "endDate": "2031-12-31",
+  "endDate": "2026-12-31",
   "timezone": "Asia/Jakarta",
-  "totalEvents": 1363,
+  "totalEvents": 58,
   "stable": {
     "combinedFile": "all.ics",
     "teams": [
       {
         "team": "Team A",
-        "events": 341,
+        "events": 15,
         "file": "team-a.ics"
       },
       {
         "team": "Team B",
-        "events": 341,
+        "events": 15,
         "file": "team-b.ics"
       },
       {
         "team": "Team C",
-        "events": 341,
+        "events": 14,
         "file": "team-c.ics"
       },
       {
         "team": "Team D",
-        "events": 340,
+        "events": 14,
         "file": "team-d.ics"
       }
     ]
   },
-  "year": 2031,
+  "year": 2026,
   "combinedFile": "all.ics",
   "teams": [
     {
       "team": "Team A",
-      "events": 341,
+      "events": 15,
       "file": "team-a.ics"
     },
     {
       "team": "Team B",
-      "events": 341,
+      "events": 15,
       "file": "team-b.ics"
     },
     {
       "team": "Team C",
-      "events": 341,
+      "events": 14,
       "file": "team-c.ics"
     },
     {
       "team": "Team D",
-      "events": 340,
+      "events": 14,
       "file": "team-d.ics"
     }
   ],
@@ -58,33 +58,15 @@
     {
       "year": 2026,
       "file": "2026.ics",
-      "events": 59
-    },
-    {
-      "year": 2027,
-      "file": "2027.ics",
-      "events": 261
-    },
-    {
-      "year": 2028,
-      "file": "2028.ics",
-      "events": 260
-    },
-    {
-      "year": 2029,
-      "file": "2029.ics",
-      "events": 261
-    },
-    {
-      "year": 2030,
-      "file": "2030.ics",
-      "events": 261
-    },
-    {
-      "year": 2031,
-      "file": "2031.ics",
-      "events": 261
+      "events": 58
     }
   ],
-  "holidaySourceMode": "manual"
+  "holidaySourceMode": "tanggalmerah-api",
+  "holidayCoverage": {
+    "mode": "tanggalmerah-api",
+    "requestedEndDate": "2031-12-31",
+    "coveredThrough": "2026-12-31",
+    "latestAvailableYear": 2026,
+    "capped": true
+  }
 }

@@ -69,32 +69,79 @@ function makeCalendar(name, events) {
   return `${lines.map(foldLine).join('\r\n')}\r\n`;
 }
 
-async function loadHolidays() {
+async function loadHolidays(requestedEndDate) {
   const configured = config.holidays ?? [];
   assert(Array.isArray(configured) && configured.every(isDate), 'holidays must be an array of valid YYYY-MM-DD dates');
   const source = config.holidaySource ?? { mode: 'manual' };
   if (source.mode === 'manual') {
     console.warn('NOTICE: holidaySource.mode is "manual"; only dates listed in config.holidays are skipped. Keep this list updated for every year in the generated horizon.');
-    return new Set(configured);
+    return { holidays: new Set(configured), endDate: requestedEndDate, coverage: { mode: 'manual', requestedEndDate, coveredThrough: requestedEndDate } };
   }
-  if (source.mode !== 'json-url' || typeof source.url !== 'string' || !/^https:\/\//i.test(source.url)) {
-    throw new Error('holidaySource must use mode "manual" or mode "json-url" with a valid HTTPS url.');
+  if (source.mode === 'json-url') {
+    if (typeof source.url !== 'string' || !/^https:\/\//i.test(source.url)) {
+      throw new Error('holidaySource json-url mode requires a valid HTTPS url.');
+    }
+    let response;
+    try {
+      response = await fetch(source.url, { signal: AbortSignal.timeout(source.timeoutMs ?? 10000), headers: { accept: 'application/json' } });
+    } catch (error) {
+      throw new Error(`Holiday source could not be reached; refusing to generate a calendar without holiday data. ${error.message}`);
+    }
+    if (!response.ok) throw new Error(`Holiday source returned HTTP ${response.status}; refusing to generate a calendar without holiday data.`);
+    let payload;
+    try { payload = await response.json(); }
+    catch { throw new Error('Holiday source did not return valid JSON; refusing to generate a calendar without holiday data.'); }
+    const remoteDates = Array.isArray(payload) ? payload : payload?.holidays;
+    if (!Array.isArray(remoteDates) || !remoteDates.every(item => isDate(typeof item === 'string' ? item : item?.date))) {
+      throw new Error('Holiday JSON must be an array of YYYY-MM-DD strings or an object with a holidays array containing YYYY-MM-DD strings / {date} objects.');
+    }
+    return { holidays: new Set([...configured, ...remoteDates.map(item => typeof item === 'string' ? item : item.date)]), endDate: requestedEndDate, coverage: { mode: 'json-url', requestedEndDate, coveredThrough: requestedEndDate } };
   }
-  let response;
-  try {
-    response = await fetch(source.url, { signal: AbortSignal.timeout(source.timeoutMs ?? 10000), headers: { accept: 'application/json' } });
-  } catch (error) {
-    throw new Error(`Holiday source could not be reached; refusing to generate a calendar without holiday data. ${error.message}`);
+  if (source.mode === 'tanggalmerah-api') {
+    const baseUrl = (source.baseUrl || 'https://tanggalmerah.upset.dev').replace(/\/+$/, '');
+    const timeoutMs = source.timeoutMs ?? 10000;
+    async function getJson(url) {
+      let response;
+      try { response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), headers: { accept: 'application/json' } }); }
+      catch (error) { throw new Error(`Tanggal Merah API could not be reached (${url}); refusing to publish an incomplete calendar. ${error.message}`); }
+      if (!response.ok) throw new Error(`Tanggal Merah API returned HTTP ${response.status} for ${url}; refusing to publish an incomplete calendar.`);
+      let payload;
+      try { payload = await response.json(); }
+      catch { throw new Error(`Tanggal Merah API returned invalid JSON for ${url}.`); }
+      if (payload?.success !== true) throw new Error(`Tanggal Merah API did not return success=true for ${url}.`);
+      return payload;
+    }
+    const yearsPayload = await getJson(`${baseUrl}/api/years`);
+    if (!Array.isArray(yearsPayload.data) || !yearsPayload.data.every(year => Number.isInteger(year))) {
+      throw new Error('Tanggal Merah API /api/years response did not contain a valid data array.');
+    }
+    const supportedYears = new Set(yearsPayload.data);
+    const firstYear = Number(config.startDate.slice(0, 4));
+    const requestedLastYear = Number(requestedEndDate.slice(0, 4));
+    if (!supportedYears.has(firstYear)) {
+      throw new Error(`Tanggal Merah API has no data for the start year ${firstYear}; refusing to generate a calendar without verified holiday coverage.`);
+    }
+    let lastCoveredYear = firstYear;
+    while (lastCoveredYear < requestedLastYear && supportedYears.has(lastCoveredYear + 1)) lastCoveredYear++;
+    const effectiveEndDate = requestedEndDate > `${lastCoveredYear}-12-31` ? `${lastCoveredYear}-12-31` : requestedEndDate;
+    const dates = new Set(configured);
+    for (let year = firstYear; year <= lastCoveredYear; year++) {
+      const payload = await getJson(`${baseUrl}/api/holidays?year=${year}`);
+      if (!Array.isArray(payload.data) || payload.data.some(item => !isDate(item?.date) || Number(item.date.slice(0, 4)) !== year || !['holiday', 'leave'].includes(item.type))) {
+        throw new Error(`Tanggal Merah API returned an invalid holiday dataset for ${year}; refusing to publish an incomplete calendar.`);
+      }
+      for (const item of payload.data) dates.add(item.date);
+    }
+    if (effectiveEndDate < requestedEndDate) {
+      console.warn(`NOTICE: Tanggal Merah API currently has verified data only through ${lastCoveredYear}; generated calendar horizon is capped at ${effectiveEndDate}. Stable feeds will extend automatically when later years become available.`);
+    }
+    return {
+      holidays: dates,
+      endDate: effectiveEndDate,
+      coverage: { mode: 'tanggalmerah-api', requestedEndDate, coveredThrough: effectiveEndDate, latestAvailableYear: lastCoveredYear, capped: effectiveEndDate < requestedEndDate }
+    };
   }
-  if (!response.ok) throw new Error(`Holiday source returned HTTP ${response.status}; refusing to generate a calendar without holiday data.`);
-  let payload;
-  try { payload = await response.json(); }
-  catch { throw new Error('Holiday source did not return valid JSON; refusing to generate a calendar without holiday data.'); }
-  const remoteDates = Array.isArray(payload) ? payload : payload?.holidays;
-  if (!Array.isArray(remoteDates) || !remoteDates.every(item => isDate(typeof item === 'string' ? item : item?.date))) {
-    throw new Error('Holiday JSON must be an array of YYYY-MM-DD strings or an object with a holidays array containing YYYY-MM-DD strings / {date} objects.');
-  }
-  return new Set([...configured, ...remoteDates.map(item => typeof item === 'string' ? item : item.date)]);
+  throw new Error('holidaySource.mode must be "manual", "json-url", or "tanggalmerah-api".');
 }
 
 function getEndDate() {
@@ -109,8 +156,9 @@ function getEndDate() {
   return endDate;
 }
 
-const endDate = getEndDate();
-const holidays = await loadHolidays();
+const requestedEndDate = getEndDate();
+const holidayResult = await loadHolidays(requestedEndDate);
+const { holidays, endDate } = holidayResult;
 const weekdays = new Set(config.eligibleWeekdays);
 const events = [];
 let rotationIndex = config.rotationOrder.indexOf(config.startTeam);
@@ -145,6 +193,14 @@ for (let year = firstYear; year <= lastYear; year++) {
   annualFeeds.push({ year, file: combinedFile, events: annualEvents.length });
 }
 
+// Remove stale annual feeds outside the currently verified/generated horizon. This matters when an API only has holiday data through the current year: old future-year files must not remain publicly subscribable with unverified dates.
+for (const filename of fs.readdirSync(outputDir)) {
+  const annualMatch = filename.match(/^(.*-)?(\d{4})\.ics$/);
+  if (!annualMatch) continue;
+  const year = Number(annualMatch[2]);
+  if (year < firstYear || year > lastYear) fs.rmSync(path.join(outputDir, filename), { force: true });
+}
+
 const manifest = {
   calendarName: config.calendarName,
   generatedAt: new Date().toISOString(),
@@ -158,7 +214,8 @@ const manifest = {
   combinedFile: allFile,
   teams: teamEntries,
   annualFeeds,
-  holidaySourceMode: (config.holidaySource ?? { mode: 'manual' }).mode
+  holidaySourceMode: (config.holidaySource ?? { mode: 'manual' }).mode,
+  holidayCoverage: holidayResult.coverage
 };
 fs.writeFileSync(path.join(outputDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(`Generated ${events.length} eligible WFH events from ${config.startDate} through ${endDate}.`);

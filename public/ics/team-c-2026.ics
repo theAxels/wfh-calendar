@@ -9,152 +9,142 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-10-13-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261013T090000
 DTEND;TZID=Asia/Jakarta:20261013T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-19-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261019T090000
 DTEND;TZID=Asia/Jakarta:20261019T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261023T090000
 DTEND;TZID=Asia/Jakarta:20261023T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-29-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261029T090000
 DTEND;TZID=Asia/Jakarta:20261029T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261104T090000
 DTEND;TZID=Asia/Jakarta:20261104T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-10-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261110T090000
 DTEND;TZID=Asia/Jakarta:20261110T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261116T090000
 DTEND;TZID=Asia/Jakarta:20261116T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261120T090000
 DTEND;TZID=Asia/Jakarta:20261120T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-26-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261126T090000
 DTEND;TZID=Asia/Jakarta:20261126T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-02-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261202T090000
 DTEND;TZID=Asia/Jakarta:20261202T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-08-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261208T090000
 DTEND;TZID=Asia/Jakarta:20261208T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-14-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261214T090000
 DTEND;TZID=Asia/Jakarta:20261214T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-18-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
+DTSTAMP:20261009T160434Z
 DTSTART;TZID=Asia/Jakarta:20261218T090000
 DTEND;TZID=Asia/Jakarta:20261218T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-24-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
-DTSTART;TZID=Asia/Jakarta:20261224T090000
-DTEND;TZID=Asia/Jakarta:20261224T170000
+UID:2026-12-28-team-c@wfh-calendar-generator
+DTSTAMP:20261009T160434Z
+DTSTART;TZID=Asia/Jakarta:20261228T090000
+DTEND;TZID=Asia/Jakarta:20261228T170000
 SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
-CATEGORIES:Team C,WFH
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-12-31-team-c@wfh-calendar-generator
-DTSTAMP:20261009T154830Z
-DTSTART;TZID=Asia/Jakarta:20261231T090000
-DTEND;TZID=Asia/Jakarta:20261231T170000
-SUMMARY:Team C — WFH
-DESCRIPTION:Work From Home day. Check your organization's policy and holi
- day list.
+DESCRIPTION:Work From Home day. Indonesian national holidays and collecti
+ ve leave are skipped using Tanggal Merah API data.
 CATEGORIES:Team C,WFH
 END:VEVENT
 END:VCALENDAR

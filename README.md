@@ -24,7 +24,7 @@ Requires Node.js 20 or newer.
 npm run generate
 ```
 
-This writes the `.ics` files and `public/ics/index.json`. The website reads that manifest to show feed links and event counts. The default horizon ends on December 31 five years after the current UTC year. Rotation continues across January 1 and does not reset annually.
+This writes the `.ics` files and `public/ics/index.json`. The website reads that manifest to show feed links and event counts. The requested rolling horizon is five years, but with the Tanggal Merah API enabled the published calendar is capped at the latest consecutive year for which holiday data exists. When the API adds later years, the scheduled workflow extends the same stable feed URLs. Rotation continues across January 1 and does not reset annually.
 
 ## Configure the rotation
 
@@ -34,7 +34,7 @@ See [docs/CONFIGURATION.md](docs/CONFIGURATION.md) for fixed/rolling horizons, d
 
 ## Public holiday data
 
-The default mode is explicit/manual. It honors only dates in `holidays` and prints a warning so maintainers know the list needs updates. For automated holiday data, configure a trusted HTTPS JSON endpoint with `holidaySource.mode: "json-url"`. If a configured remote source fails or returns invalid data, generation stops instead of publishing a potentially incorrect calendar. Review the source and its coverage before enabling it.
+The default configuration uses [Tanggal Merah API](https://upset.dev/tanggalmerah) to fetch Indonesian national holidays and collective leave days. The generator validates the API response and only generates through the latest consecutive year returned by `/api/years`; it refuses to publish if the API is unavailable or the data is invalid. This avoids stale manual holiday lists and prevents unverified future-year feeds from remaining published. The generator also supports a custom HTTPS JSON source (`mode: "json-url"`) or explicit manual dates (`mode: "manual"`) if you prefer to maintain the data yourself.
 
 ## GitHub Actions
 
