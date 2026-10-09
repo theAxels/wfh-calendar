@@ -223,15 +223,34 @@
       }
     }).catch(() => { $('feeds-list').innerHTML = '<p>Feed index not found yet. Run <code>npm run generate</code> and publish the <code>public/</code> folder.</p>'; });
   </script>
-  <section class="status-bar" aria-label="Holiday and work-hour status" id="holiday-status">
+  <section class="status-bar" aria-label="Holiday and working-hours status" id="holiday-status">
     <div class="status-pill" id="holiday-coverage" role="status" aria-live="polite">Loading holiday coverage…</div>
-    <div class="status-row">
-      <span>Regular hours: 08:30–17:30 WIB</span>
-      <span>Flexi time: clock in 08:30–09:30 WIB, 8 hours total (latest clock-out 18:30 WIB)</span>
-    </div>
-    <div class="scheme-list" id="scheme-list" aria-label="Employee work-hour schemes"></div>
-    <p class="status-row" id="holiday-source-note">Holiday dates are sourced from the third-party Tanggal Merah API. Official corrections require documented government sources.</p>
+    <div class="status-row"><span><strong>Regular working hours:</strong> 08:30–17:30 WIB</span></div>
+    <p class="status-row" id="holiday-source-note">Holiday data is sourced from the third-party Tanggal Merah API. Future years are published only after validation.</p>
   </section>
+  <script>
+    (() => {
+      const coverage = document.getElementById('holiday-coverage');
+      fetch('./data/holidays/sync-status.json', { cache: 'no-store' })
+        .then(response => { if (!response.ok) throw new Error('Holiday status unavailable'); return response.json(); })
+        .then(status => {
+          const lastSuccess = status.lastSuccess ? new Date(status.lastSuccess).toISOString().slice(0, 10) : 'not recorded';
+          const pending = Array.isArray(status.pendingYears) && status.pendingYears.length
+            ? 'Next year pending publication: ' + status.pendingYears.join(', ')
+            : 'Future coverage depends on source publication.';
+          coverage.textContent = 'Holiday data verified through ' + (status.verifiedThrough || status.coverage || 'unknown') +
+            ' · Last successful sync: ' + lastSuccess + ' · ' + pending;
+          coverage.dataset.status = status.status || 'unknown';
+          if (status.status === 'error' || (status.errors || []).length) {
+            coverage.title = 'Latest sync errors: ' + status.errors.map(error => error.message || String(error)).join('; ');
+          }
+        })
+        .catch(() => {
+          coverage.textContent = 'Holiday coverage status unavailable · Check sync-status.json before relying on future dates.';
+          coverage.dataset.status = 'error';
+        });
+    })();
+  </script>
   <script>
     (() => {
       const coverage = document.getElementById('holiday-coverage');
