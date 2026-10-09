@@ -116,11 +116,11 @@ test('stable all-team and per-team output filenames do not change', async () => 
   assert.ok(fs.existsSync(path.join(rootDir, 'public', 'ics', 'team-b.ics')));
   fs.rmSync(rootDir, { recursive: true, force: true });
 });
-test('website source loads status and employee data dynamically', async () => {
+test('website displays regular hours and loads holiday sync status dynamically', () => {
   const html = fs.readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
-  assert.match(html, /fetch\('\.\/data\/holidays\/sync-status\.json'/);
-  assert.match(html, /fetch\('\.\/data\/employees\.json'/);
-  assert.match(html, /employee\.name/);
+  assert.ok(html.includes("fetch('./data/holidays/sync-status.json'"));
+  assert.ok(html.includes('08:30–17:30 WIB'));
+  assert.ok(!html.includes('employees.json'));
 });
 test('sync failure summary exposes errors for GitHub Actions to fail the job', async () => {
   const rootDir = tempRoot();
