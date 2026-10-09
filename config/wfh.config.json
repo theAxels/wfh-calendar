@@ -31,7 +31,7 @@
     "timeoutMs": 10000
   },
   "holidays": [],
-  "eventStartTime": "09:00",
-  "eventEndTime": "17:00",
+  "eventStartTime": "08:30",
+  "eventEndTime": "17:30",
   "description": "Work From Home day. Indonesian national holidays and collective leave are skipped using Tanggal Merah API data."
 }
