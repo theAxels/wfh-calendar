@@ -1,6 +1,6 @@
 {
-  "lastCheck": "2026-10-10T18:01:04.643Z",
-  "lastSuccess": "2026-10-09T18:11:13.833Z",
+  "lastCheck": "2026-10-12T14:37:57.407Z",
+  "lastSuccess": "2026-10-12T14:37:57.407Z",
   "availableYears": [
     2023,
     2024,
@@ -8,13 +8,10 @@
     2026
   ],
   "verifiedThrough": "2026-12-31",
-  "pendingYears": [],
-  "errors": [
-    {
-      "year": 2027,
-      "message": "Year 2027 is not currently listed by the API (pending publication)."
-    }
+  "pendingYears": [
+    2027
   ],
-  "status": "error",
+  "errors": [],
+  "status": "verified",
   "source": "https://tanggalmerah.upset.dev"
 }
