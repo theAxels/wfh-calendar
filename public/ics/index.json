@@ -1,68 +1,68 @@
 {
   "calendarName": "WFH Calendar",
-  "generatedAt": "2026-10-19T12:22:07.187Z",
+  "generatedAt": "2026-10-26T12:23:38.557Z",
   "startDate": "2026-10-09",
-  "endDate": "2026-12-31",
+  "endDate": "2027-12-31",
   "requestedEndDate": "2031-12-31",
   "timezone": "Asia/Jakarta",
-  "totalEvents": 59,
+  "totalEvents": 301,
   "stable": {
     "combinedFile": "all.ics",
     "teams": [
       {
         "team": "All teams",
         "file": "all.ics",
-        "events": 59
+        "events": 301
       },
       {
         "team": "Team A",
         "file": "team-a.ics",
-        "events": 15
+        "events": 76
       },
       {
         "team": "Team B",
         "file": "team-b.ics",
-        "events": 15
+        "events": 75
       },
       {
         "team": "Team C",
         "file": "team-c.ics",
-        "events": 15
+        "events": 75
       },
       {
         "team": "Team D",
         "file": "team-d.ics",
-        "events": 14
+        "events": 75
       }
     ]
   },
-  "year": 2026,
+  "year": 2027,
   "combinedFile": "all.ics",
   "teams": [
     {
       "team": "All teams",
       "file": "all.ics",
-      "events": 59
+      "events": 301
     },
     {
       "team": "Team A",
       "file": "team-a.ics",
-      "events": 15
+      "events": 76
     },
     {
       "team": "Team B",
       "file": "team-b.ics",
-      "events": 15
+      "events": 75
     },
     {
       "team": "Team C",
       "file": "team-c.ics",
-      "events": 15
+      "events": 75
     },
     {
       "team": "Team D",
       "file": "team-d.ics",
-      "events": 14
+      "events": 75
     }
   ],
   "annualFeeds": [
@@ -70,23 +70,29 @@
       "year": 2026,
       "file": "2026.ics",
       "events": 59
+    },
+    {
+      "year": 2027,
+      "file": "2027.ics",
+      "events": 242
     }
   ],
   "holidayCoverage": {
     "requestedEndDate": "2031-12-31",
-    "coveredThrough": "2026-12-31",
-    "latestVerifiedDate": "2026-12-31",
+    "coveredThrough": "2027-12-31",
+    "latestVerifiedDate": "2027-12-31",
     "capped": true,
-    "lastCheck": "2026-10-19T12:22:06.526Z",
-    "lastSuccess": "2026-10-19T12:22:06.526Z",
+    "lastCheck": "2026-10-26T12:23:38.158Z",
+    "lastSuccess": "2026-10-26T12:23:38.158Z",
     "availableYears": [
       2023,
       2024,
       2025,
-      2026
+      2026,
+      2027
     ],
     "pendingYears": [
-      2027
+      2028
     ]
   }
 }

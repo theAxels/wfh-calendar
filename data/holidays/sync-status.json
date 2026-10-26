@@ -1,15 +1,16 @@
 {
-  "lastCheck": "2026-10-19T12:22:06.526Z",
-  "lastSuccess": "2026-10-19T12:22:06.526Z",
+  "lastCheck": "2026-10-26T12:23:38.158Z",
+  "lastSuccess": "2026-10-26T12:23:38.158Z",
   "availableYears": [
     2023,
     2024,
     2025,
-    2026
-  ],
-  "verifiedThrough": "2026-12-31",
-  "pendingYears": [
+    2026,
     2027
+  ],
+  "verifiedThrough": "2027-12-31",
+  "pendingYears": [
+    2028
   ],
   "errors": [],
   "status": "verified",
