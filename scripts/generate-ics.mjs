@@ -173,6 +173,10 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
     timezone: TZID, totalEvents: events.length,
     stable: { combinedFile: 'all.ics', teams: stableFiles }, year: lastYear,
     combinedFile: 'all.ics', teams: stableFiles,
+    holidays: [...holidayMap.values()]
+      .filter(holiday => holiday.date >= config.startDate && holiday.date <= effectiveEndDate)
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .map(({ date, name, type }) => ({ date, name, type })),
     holidayCoverage: { requestedEndDate, coveredThrough: effectiveEndDate, latestVerifiedDate, capped: effectiveEndDate < requestedEndDate, lastCheck: status.lastCheck ?? null, lastSuccess: status.lastSuccess ?? null, availableYears: status.availableYears ?? [], pendingYears: status.pendingYears ?? [] },
   };
   fs.writeFileSync(path.join(outputDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\n`);

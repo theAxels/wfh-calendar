@@ -102,12 +102,18 @@ test('holidays are skipped without advancing the team rotation', () => {
     const dayEvents = result.events.filter(event => event.date === '2027-01-05');
     assert.equal(dayEvents[0].team, 'Team A'); // Monday holiday skipped without rotating.
     assert.equal(result.events.some(event => event.date === '2027-01-04'), false);
+    const manifest = JSON.parse(fs.readFileSync(path.join(output, 'index.json'), 'utf8'));
+    assert.ok(manifest.holidays.some(holiday => holiday.date === '2027-01-04' && holiday.name === 'Local test holiday'));
+    const ics = fs.readFileSync(path.join(output, 'all.ics'), 'utf8');
+    assert.match(ics, /SUMMARY:WFH — Team A/);
+    assert.doesNotMatch(ics, /Local test holiday|SUMMARY:Holiday|SUMMARY:Collective leave/);
+    assert.doesNotMatch(ics, /DTSTART;TZID=Asia\/Jakarta:20270104T083000/);
     fs.rmSync(rootDir, { recursive: true, force: true });
   });
 });
 test('stable all-team and per-team output filenames do not change', async () => {
   const rootDir = tempRoot();
-  fs.writeFileSync(path.join(rootDir, 'config', 'wfh.config.json'), JSON.stringify({ calendarName: 'Test', timezone: 'Asia/Jakarta', startDate: '2027-01-04', endDateMode: 'fixed', endDate: '2027-01-05', startTeam: 'Team A', teams: ['Team A', 'Team B'], rotationOrder: ['Team A', 'Team B'], eligibleWeekdays: [1, 2, 3, 4, 5] }));
+  fs.writeFileSync(path.join(rootDir, 'config', 'wfh.config.json'), JSON.stringify({ calendarName: 'Test', timezone: 'Asia/Jakarta', startDate: '2027-01-01', endDateMode: 'fixed', endDate: '2027-01-05', startTeam: 'Team A', teams: ['Team A', 'Team B'], rotationOrder: ['Team A', 'Team B'], eligibleWeekdays: [1, 2, 3, 4, 5] }));
   writeYear(rootDir, 2027);
   fs.writeFileSync(path.join(rootDir, 'data', 'holidays', 'overrides.json'), JSON.stringify({ overrides: [] }));
   const output = path.join(rootDir, 'public', 'ics');
@@ -122,6 +128,8 @@ test('stable all-team and per-team output filenames do not change', async () => 
   assert.deepEqual(fs.readdirSync(output).sort(), ['all.ics', 'index.json', 'team-a.ics', 'team-b.ics']);
   const manifest = JSON.parse(fs.readFileSync(path.join(output, 'index.json'), 'utf8'));
   assert.equal('annualFeeds' in manifest, false);
+  assert.equal(manifest.holidays.length, 1);
+  assert.deepEqual(manifest.holidays[0], { date: '2027-01-01', name: 'National holiday 1', type: 'national' });
   fs.rmSync(rootDir, { recursive: true, force: true });
 });
 test('website displays regular hours and loads holiday sync status dynamically', () => {
