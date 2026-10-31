@@ -14,7 +14,7 @@ Subscribe once to these stable URLs; their contents are regenerated as the horiz
 - Team C: `https://theaxels.github.io/wfh-calendar/ics/team-c.ics`
 - Team D: `https://theaxels.github.io/wfh-calendar/ics/team-d.ics`
 
-If you add or rename teams, the generator creates a stable feed for each configured team. Existing year-specific feeds are also generated for backward compatibility.
+The generator publishes only these five stable feeds (one combined feed and one per team); it removes legacy year-specific `.ics` files. If you add or rename teams, it creates a stable feed for each configured team.
 
 ## Generate locally
 
@@ -24,7 +24,7 @@ Requires Node.js 20 or newer.
 npm run generate
 ```
 
-This writes the `.ics` files and `public/ics/index.json`. The website reads that manifest to show feed links and event counts. The requested rolling horizon is five years, but with the Tanggal Merah API enabled the published calendar is capped at the latest consecutive year for which holiday data exists. When the API adds later years, the scheduled workflow extends the same stable feed URLs. Rotation continues across January 1 and does not reset annually.
+This writes the stable `.ics` files and `public/ics/index.json`. The website reads that manifest to show feed links and event counts. The requested rolling horizon ends on December 31 of the current UTC year plus five years, but with the Tanggal Merah API enabled the published calendar is capped at the latest consecutive year for which holiday data exists. When the API adds later years, the scheduled workflow extends the same stable feed URLs. Rotation continues across January 1 and does not reset annually.
 
 ## Configure the rotation
 

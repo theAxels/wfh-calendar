@@ -151,6 +151,11 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
 
   const events = teamEvents;
   fs.mkdirSync(outputDir, { recursive: true });
+  for (const filename of fs.readdirSync(outputDir)) {
+    if (/^(?:\d{4}|[a-z0-9]+(?:-[a-z0-9]+)*-\d{4})\.ics$/i.test(filename)) {
+      fs.rmSync(path.join(outputDir, filename), { force: true });
+    }
+  }
   const allName = `${config.calendarName} — All Teams`;
   const stableFiles = [{ team: 'All teams', file: 'all.ics', events: events.length }];
   fs.writeFileSync(path.join(outputDir, 'all.ics'), makeCalendar(allName, events, config));
@@ -160,29 +165,14 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
     fs.writeFileSync(path.join(outputDir, filename), makeCalendar(`${config.calendarName} — ${team}`, teamEvents, config));
     stableFiles.push({ team, file: filename, events: teamEvents.length });
   }
-  const firstYear = Number(config.startDate.slice(0, 4));
   const lastYear = Number(effectiveEndDate.slice(0, 4));
-  const annualFeeds = [];
-  for (let year = firstYear; year <= lastYear; year++) {
-    const annual = events.filter(event => Number(event.date.slice(0, 4)) === year);
-    const combined = `${year}.ics`;
-    fs.writeFileSync(path.join(outputDir, combined), makeCalendar(`${config.calendarName} ${year} — All Teams`, annual, config));
-    for (const team of config.teams) {
-      fs.writeFileSync(path.join(outputDir, `${slug(team)}-${year}.ics`), makeCalendar(`${config.calendarName} ${year} — ${team}`, annual.filter(event => event.team === team), config));
-    }
-    annualFeeds.push({ year, file: combined, events: annual.length });
-  }
-  for (const filename of fs.readdirSync(outputDir)) {
-    const match = filename.match(/^(.*-)?(\d{4})\.ics$/);
-    if (match && (Number(match[2]) < firstYear || Number(match[2]) > lastYear)) fs.rmSync(path.join(outputDir, filename), { force: true });
-  }
   const status = readJson(path.join(rootDir, 'data', 'holidays', 'sync-status.json'), {});
   const manifest = {
     calendarName: config.calendarName, generatedAt: new Date().toISOString(),
     startDate: config.startDate, endDate: effectiveEndDate, requestedEndDate,
     timezone: TZID, totalEvents: events.length,
     stable: { combinedFile: 'all.ics', teams: stableFiles }, year: lastYear,
-    combinedFile: 'all.ics', teams: stableFiles, annualFeeds,
+    combinedFile: 'all.ics', teams: stableFiles,
     holidayCoverage: { requestedEndDate, coveredThrough: effectiveEndDate, latestVerifiedDate, capped: effectiveEndDate < requestedEndDate, lastCheck: status.lastCheck ?? null, lastSuccess: status.lastSuccess ?? null, availableYears: status.availableYears ?? [], pendingYears: status.pendingYears ?? [] },
   };
   fs.writeFileSync(path.join(outputDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\n`);
@@ -190,7 +180,7 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
   const publicDataDir = path.join(path.dirname(outputDir), 'data');
   fs.mkdirSync(path.join(publicDataDir, 'holidays'), { recursive: true });
   fs.copyFileSync(path.join(rootDir, 'data', 'holidays', 'sync-status.json'), path.join(publicDataDir, 'holidays', 'sync-status.json'));
-  return { events, startDate: config.startDate, endDate: effectiveEndDate, requestedEndDate, stableFiles, annualFeeds };
+  return { events, startDate: config.startDate, endDate: effectiveEndDate, requestedEndDate, stableFiles };
 }
 
 if (process.argv[1] && process.argv[1] === fileURLToPath(import.meta.url)) {

@@ -7,7 +7,7 @@ on:
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
   workflow_run:
-    workflows: ["Sync holiday cache"]
+    workflows: ["Sync holiday cache", "Generate WFH calendars"]
     types: [completed]
     branches: [main]
 permissions:
@@ -19,7 +19,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'failure' }}
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' || (github.event.workflow_run.name == 'Sync holiday cache' && github.event.workflow_run.conclusion == 'failure') }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

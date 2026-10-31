@@ -110,10 +110,18 @@ test('stable all-team and per-team output filenames do not change', async () => 
   fs.writeFileSync(path.join(rootDir, 'config', 'wfh.config.json'), JSON.stringify({ calendarName: 'Test', timezone: 'Asia/Jakarta', startDate: '2027-01-04', endDateMode: 'fixed', endDate: '2027-01-05', startTeam: 'Team A', teams: ['Team A', 'Team B'], rotationOrder: ['Team A', 'Team B'], eligibleWeekdays: [1, 2, 3, 4, 5] }));
   writeYear(rootDir, 2027);
   fs.writeFileSync(path.join(rootDir, 'data', 'holidays', 'overrides.json'), JSON.stringify({ overrides: [] }));
-  await generateIcs(path.join(rootDir, 'config', 'wfh.config.json'), path.join(rootDir, 'public', 'ics'), rootDir);
+  const output = path.join(rootDir, 'public', 'ics');
+  fs.mkdirSync(output, { recursive: true });
+  for (const filename of ['2026.ics', 'team-a-2026.ics', 'removed-team-2025.ics']) {
+    fs.writeFileSync(path.join(output, filename), 'legacy annual feed');
+  }
+  await generateIcs(path.join(rootDir, 'config', 'wfh.config.json'), output, rootDir);
   assert.ok(fs.existsSync(path.join(rootDir, 'public', 'ics', 'all.ics')));
   assert.ok(fs.existsSync(path.join(rootDir, 'public', 'ics', 'team-a.ics')));
   assert.ok(fs.existsSync(path.join(rootDir, 'public', 'ics', 'team-b.ics')));
+  assert.deepEqual(fs.readdirSync(output).sort(), ['all.ics', 'index.json', 'team-a.ics', 'team-b.ics']);
+  const manifest = JSON.parse(fs.readFileSync(path.join(output, 'index.json'), 'utf8'));
+  assert.equal('annualFeeds' in manifest, false);
   fs.rmSync(rootDir, { recursive: true, force: true });
 });
 test('website displays regular hours and loads holiday sync status dynamically', () => {

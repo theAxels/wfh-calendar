@@ -1,6 +1,6 @@
 {
   "calendarName": "WFH Calendar",
-  "generatedAt": "2026-10-26T12:23:38.557Z",
+  "generatedAt": "2026-10-31T17:43:50.257Z",
   "startDate": "2026-10-09",
   "endDate": "2027-12-31",
   "requestedEndDate": "2031-12-31",
@@ -63,18 +63,6 @@
       "team": "Team D",
       "file": "team-d.ics",
       "events": 75
-    }
-  ],
-  "annualFeeds": [
-    {
-      "year": 2026,
-      "file": "2026.ics",
-      "events": 59
-    },
-    {
-      "year": 2027,
-      "file": "2027.ics",
-      "events": 242
     }
   ],
   "holidayCoverage": {

@@ -27,11 +27,11 @@ These filenames never change when the year changes:
 - `public/ics/all.ics` — every team's WFH events
 - `public/ics/team-a.ics` — only Team A (one stable file per configured team)
 
-The generator also retains year-specific feeds such as `2026.ics` and `team-a-2026.ics` for backward compatibility. Rotation continues from `startDate` across year boundaries; it does not restart each January.
+The generator publishes only the combined feed and one stable feed per configured team. It removes legacy year-specific feeds such as `2026.ics` and `team-a-2026.ics`. Rotation continues from `startDate` across year boundaries; it does not restart each January.
 
 ## Rolling horizon
 
-With `endDateMode: "rolling"`, the requested end date is December 31 of the current UTC year plus `rollingYearsAhead`. Set `rollingYearsAhead` from 1 to 15. When `tanggalmerah-api` is enabled, the actual generated end date is capped at the latest consecutive year with published holiday data; the manifest records both the requested and actual coverage. For a fixed end date, use `endDateMode: "fixed"` and provide `endDate: "YYYY-MM-DD"` (API coverage can still cap the effective date).
+With `endDateMode: "rolling"`, the requested end date is December 31 of the current UTC year plus `rollingYearsAhead`. Set `rollingYearsAhead` from 1 to 15 (the default configuration uses 5). The feed starts at the configured `startDate`. When `tanggalmerah-api` is enabled, the actual generated end date is capped at the latest consecutive year with published holiday data; the manifest records both the requested and actual coverage. For a fixed end date, use `endDateMode: "fixed"` and provide `endDate: "YYYY-MM-DD"` (API coverage can still cap the effective date).
 
 ## Public holidays — important
 
