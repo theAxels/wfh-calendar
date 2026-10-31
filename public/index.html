@@ -78,8 +78,19 @@
     .calendar-toolbar{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
     .calendar-toolbar h3{margin-top:8px}
     .calendar-controls{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
-    .calendar-feed-label{color:var(--muted);font-size:12px;font-weight:700}
-    .calendar-feed-select{min-height:40px;max-width:180px;padding:8px 32px 8px 11px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);font:inherit;font-size:13px}
+    .calendar-feed-label{color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .calendar-feed-picker{position:relative;z-index:2;min-width:170px}
+    .calendar-feed-trigger{width:100%;min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:700 13px var(--font-body);text-align:left;cursor:pointer;transition:border-color 150ms,box-shadow 150ms}
+    .calendar-feed-trigger:hover:not(:disabled),.calendar-feed-picker.is-open .calendar-feed-trigger{border-color:var(--strong)}
+    .calendar-feed-trigger:disabled{opacity:.55;cursor:not-allowed}
+    .calendar-feed-chevron{width:8px;height:8px;flex:0 0 8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform 150ms}
+    .calendar-feed-picker.is-open .calendar-feed-chevron{transform:rotate(225deg) translate(-2px,-1px)}
+    .calendar-feed-options{position:absolute;top:calc(100% + 8px);right:0;left:0;z-index:5;max-height:min(280px,50vh);overflow-y:auto;padding:6px;border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:0 14px 36px rgba(0,0,0,.14)}
+    .calendar-feed-option{width:100%;min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 11px;border:0;border-radius:9px;background:transparent;color:var(--ink);font:600 13px var(--font-body);text-align:left;cursor:pointer}
+    .calendar-feed-option:hover,.calendar-feed-option:focus-visible{outline:0;background:#f2f2f2}
+    .calendar-feed-option[aria-selected="true"]{background:#eaf2ff;color:#1d4ed8;font-weight:800}
+    .calendar-feed-option-check{font-weight:900}
+    .calendar-feed-trigger:focus-visible,.month-nav:focus-visible,.preview-feed:focus-visible,.calendar-event-button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
     .calendar-month{min-width:140px;text-align:center;font-size:14px;font-weight:800}
     .month-nav{width:40px;height:40px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:22px;cursor:pointer}
     .month-nav:hover:not(:disabled){border-color:var(--strong)}
@@ -102,15 +113,31 @@
     .calendar-day-empty{background:#fafafa}
     .feed .preview-feed{margin-top:-7px!important;text-decoration:none}
     .feed .preview-feed[aria-pressed="true"]{color:var(--blue);font-weight:900}
-    .calendar-feed-select:focus-visible,.month-nav:focus-visible,.preview-feed:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-    @media(max-width:720px){.calendar-toolbar{align-items:flex-start;flex-direction:column;gap:14px}.calendar-controls{justify-content:flex-start;width:100%}.calendar-feed-select{max-width:none;flex:1}.calendar-month{min-width:112px}.calendar-table td{height:82px;padding:6px}.calendar-table th{padding:8px 6px}}
-    @media(max-width:440px){.calendar-controls{gap:6px}.calendar-feed-label{width:100%}.calendar-feed-select{flex:1 1 100%}.calendar-month{flex:1}.month-nav{width:36px;height:36px}.calendar-table{min-width:490px}}
+    .calendar-table th:last-child{color:#dc2626}
+    .calendar-table td:last-child{background:#fff7f7}
+    .calendar-table td:last-child .calendar-day-number{color:#dc2626}
+    .calendar-day-empty:last-child{background:#fff3f3}
+    .calendar-event-button{width:100%;border:0;border-radius:2px;text-align:left;cursor:pointer}
+    .calendar-event-button:hover{filter:brightness(.96)}
+    .event-dialog{width:min(480px,calc(100% - 32px));max-width:none;padding:26px;border:1px solid var(--line);background:var(--paper);color:var(--ink);box-shadow:0 24px 80px rgba(0,0,0,.2)}
+    .event-dialog::backdrop{background:rgba(17,17,17,.48);backdrop-filter:blur(3px)}
+    .event-dialog-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+    .event-dialog h3{margin-top:8px;font-size:clamp(24px,5vw,32px)}
+    .event-dialog-close{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--ink);font-size:22px;cursor:pointer}
+    .event-dialog-close:hover{border-color:var(--strong)}
+    .event-dialog-details{display:grid;grid-template-columns:1fr;gap:14px;margin:24px 0 0}
+    .event-dialog-details div{padding-top:12px;border-top:1px solid var(--line)}
+    .event-dialog-details dt{color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .event-dialog-details dd{margin:4px 0 0;font-size:15px;line-height:1.55;white-space:pre-line}
+    .event-dialog-close:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+    @media(max-width:720px){.calendar-toolbar{align-items:flex-start;flex-direction:column;gap:14px}.calendar-controls{justify-content:flex-start;width:100%}.calendar-feed-picker{flex:1;max-width:240px}.calendar-month{min-width:112px}.calendar-table td{height:82px;padding:6px}.calendar-table th{padding:8px 6px}}
+    @media(max-width:440px){.calendar-controls{gap:6px}.calendar-feed-label{width:100%}.calendar-feed-picker{flex:1 1 100%;max-width:none}.calendar-feed-options{right:auto;left:0}.calendar-month{flex:1}.month-nav{width:36px;height:36px}.calendar-table{min-width:490px}}
   </style>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="WFH Calendar home"><span><span class="brand-name">WFH Calendar</span><span class="header-tag">Shared calendar · Easy setup</span></span></a>
-    <div class="header-right"><nav class="nav-links" aria-label="Main navigation"><a href="#feeds">Calendars</a><a href="#subscribe-guide">How to subscribe</a></nav><a class="header-cta" href="#feeds">Choose a feed <span aria-hidden="true">↓</span></a></div>
+    <div class="header-right"><nav class="nav-links" aria-label="Main navigation"><a href="#feeds">Calendars</a><a href="#calendar-preview">Preview</a><a href="#subscribe-guide">How to subscribe</a></nav><a class="header-cta" href="#calendar-preview">Preview calendar <span aria-hidden="true">↓</span></a></div>
   </header>
   <main id="top">
     <section class="hero">
@@ -141,12 +168,18 @@
     <section class="panel" id="feeds">
       <div class="section-head"><div><div class="section-label">Choose a calendar feed</div><h2>Pick your rotation.</h2></div><p class="section-intro">Pick the combined schedule or subscribe to only your team.</p></div>
       <div id="feeds-list" class="links"><p>Loading calendar feeds… If this message remains, run <code>npm run generate</code> and publish the <code>public/</code> folder.</p></div>
-      <section class="calendar-preview" aria-labelledby="calendar-heading">
+      <section class="calendar-preview" id="calendar-preview" aria-labelledby="calendar-heading">
         <div class="calendar-toolbar">
           <div><div class="section-label">Live schedule</div><h3 id="calendar-heading">Calendar preview</h3></div>
           <div class="calendar-controls">
-            <label class="calendar-feed-label" for="calendar-feed">Showing</label>
-            <select class="calendar-feed-select" id="calendar-feed" disabled><option>Loading feeds…</option></select>
+            <span class="calendar-feed-label" id="calendar-feed-label">Showing</span>
+            <div class="calendar-feed-picker" id="calendar-feed-picker">
+              <button class="calendar-feed-trigger" id="calendar-feed-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="calendar-feed-label calendar-feed-value" disabled>
+                <span id="calendar-feed-value">Loading feeds…</span><span class="calendar-feed-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="calendar-feed-options" id="calendar-feed-options" role="listbox" aria-labelledby="calendar-feed-label" hidden></div>
+              <select id="calendar-feed" hidden aria-hidden="true" tabindex="-1" disabled><option>Loading feeds…</option></select>
+            </div>
             <button class="month-nav" id="previous-month" type="button" aria-label="Previous month" disabled>‹</button>
             <span class="calendar-month" id="calendar-month" aria-live="polite">—</span>
             <button class="month-nav" id="next-month" type="button" aria-label="Next month" disabled>›</button>
@@ -204,6 +237,13 @@
     <div><div class="footer-heading">Team feeds</div><div class="footer-links"><a href="./ics/team-a.ics">Team A</a><a href="./ics/team-b.ics">Team B</a><a href="./ics/team-c.ics">Team C</a><a href="./ics/team-d.ics">Team D</a><a href="#subscribe-guide">Google Calendar</a><a href="#subscribe-guide">Apple Calendar</a></div></div>
     <div><div class="footer-heading">Project</div><a class="repo-link" href="https://github.com/theAxels/wfh-calendar" target="_blank" rel="noopener noreferrer">GitHub repository <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M8 2h6v6M14 2 7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><p style="max-width:260px;line-height:1.6;margin-top:12px">Public calendar feeds for a simple, continuously updated WFH rotation.</p></div>
   </footer>
+  <dialog class="event-dialog" id="event-dialog" aria-labelledby="event-dialog-title">
+    <div class="event-dialog-header">
+      <div><div class="section-label">Calendar event</div><h3 id="event-dialog-title"></h3></div>
+      <button class="event-dialog-close" id="event-dialog-close" type="button" aria-label="Close event details">×</button>
+    </div>
+    <dl class="event-dialog-details" id="event-dialog-details"></dl>
+  </dialog>
   <script>
     const guides = {
       google: {
@@ -276,9 +316,16 @@
     $('next-step').addEventListener('click', () => { if (activeStep < guides[activePlatform].steps.length-1) { activeStep++; renderGuide(); } });
     renderGuide();
     const calendarSelect = $('calendar-feed');
+    const calendarFeedPicker = $('calendar-feed-picker');
+    const calendarFeedTrigger = $('calendar-feed-trigger');
+    const calendarFeedValue = $('calendar-feed-value');
+    const calendarFeedOptions = $('calendar-feed-options');
     const calendarState = $('calendar-state');
     const calendarMonth = $('calendar-month');
     const calendarDays = $('calendar-days');
+    const eventDialog = $('event-dialog');
+    const eventDialogTitle = $('event-dialog-title');
+    const eventDialogDetails = $('event-dialog-details');
     const previousMonth = $('previous-month');
     const nextMonth = $('next-month');
     let calendarFeeds = [];
@@ -289,9 +336,100 @@
     let visibleMonth = null;
     let feedRequest = 0;
 
+    function closeCalendarFeedOptions(returnFocus = false) {
+      calendarFeedOptions.hidden = true;
+      calendarFeedTrigger.setAttribute('aria-expanded', 'false');
+      calendarFeedPicker.classList.remove('is-open');
+      if (returnFocus) calendarFeedTrigger.focus();
+    }
+
+    function openCalendarFeedOptions(focusSelected = true) {
+      if (calendarFeedTrigger.disabled) return;
+      calendarFeedOptions.hidden = false;
+      calendarFeedTrigger.setAttribute('aria-expanded', 'true');
+      calendarFeedPicker.classList.add('is-open');
+      const options = [...calendarFeedOptions.querySelectorAll('[role="option"]')];
+      const selected = options.find(option => option.getAttribute('aria-selected') === 'true') || options[0];
+      if (focusSelected) selected?.focus();
+    }
+
+    calendarFeedTrigger.addEventListener('click', () => {
+      if (calendarFeedOptions.hidden) openCalendarFeedOptions();
+      else closeCalendarFeedOptions();
+    });
+    calendarFeedTrigger.addEventListener('keydown', event => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openCalendarFeedOptions();
+      }
+    });
+    calendarFeedOptions.addEventListener('click', event => {
+      const option = event.target.closest('[role="option"]');
+      if (option) selectCalendarFeed(option.dataset.file);
+    });
+    calendarFeedOptions.addEventListener('keydown', event => {
+      const options = [...calendarFeedOptions.querySelectorAll('[role="option"]')];
+      const currentIndex = options.indexOf(document.activeElement);
+      let nextIndex = currentIndex;
+      if (event.key === 'ArrowDown') nextIndex = (currentIndex + 1) % options.length;
+      else if (event.key === 'ArrowUp') nextIndex = (currentIndex - 1 + options.length) % options.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = options.length - 1;
+      else if (event.key === 'Escape') {
+        event.preventDefault();
+        closeCalendarFeedOptions(true);
+        return;
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        options[currentIndex]?.click();
+        return;
+      } else if (event.key === 'Tab') {
+        closeCalendarFeedOptions();
+        return;
+      } else {
+        return;
+      }
+      event.preventDefault();
+      options[nextIndex]?.focus();
+    });
+    document.addEventListener('pointerdown', event => {
+      if (!calendarFeedPicker.contains(event.target)) closeCalendarFeedOptions();
+    });
+
     function monthKey(date) {
       return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, '0')}`;
     }
+
+    function decodeCalendarText(value) {
+      return value.replace(/\\n/gi, '\n').replace(/\\([,;\\])/g, '$1');
+    }
+
+    function showEventDetails({ title, date, time, calendar, description, type }) {
+      eventDialogTitle.textContent = title;
+      eventDialogDetails.replaceChildren();
+      const details = [
+        ['Date', new Intl.DateTimeFormat(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`))],
+        ...(time ? [['Time', `${time} WIB`]] : []),
+        ...(type ? [['Type', type]] : []),
+        ['Calendar', calendar],
+        ...(description ? [['Details', description]] : [])
+      ];
+      for (const [label, value] of details) {
+        const row = document.createElement('div');
+        const term = document.createElement('dt');
+        term.textContent = label;
+        const content = document.createElement('dd');
+        content.textContent = value;
+        row.append(term, content);
+        eventDialogDetails.append(row);
+      }
+      eventDialog.showModal();
+    }
+
+    $('event-dialog-close').addEventListener('click', () => eventDialog.close());
+    eventDialog.addEventListener('click', event => {
+      if (event.target === eventDialog) eventDialog.close();
+    });
 
     function parseCalendarEvents(text) {
       const normalized = text.replaceAll('\\r\\n', '\n').replace(/\r\n?/g, '\n').replace(/\n[ \t]/g, '');
@@ -300,13 +438,23 @@
       }
       const events = new Map();
       for (const match of normalized.matchAll(/BEGIN:VEVENT\n([\s\S]*?)\nEND:VEVENT/g)) {
-        const dateMatch = match[1].match(/^DTSTART(?:;[^:]*)?:(\d{8})T\d{6}$/m);
-        if (!dateMatch) continue;
-        const date = `${dateMatch[1].slice(0, 4)}-${dateMatch[1].slice(4, 6)}-${dateMatch[1].slice(6, 8)}`;
-        const summary = match[1].match(/^SUMMARY:WFH — (.+?) \(Regular/m);
-        const teams = events.get(date) || [];
-        teams.push(summary?.[1] || 'WFH');
-        events.set(date, teams);
+        const lines = match[1].split('\n');
+        const property = name => lines.find(line => line.startsWith(`${name}:`) || line.startsWith(`${name};`))?.split(/:(.*)/s)[1] || '';
+        const startMatch = property('DTSTART').match(/^(\d{8})T(\d{2})(\d{2})(\d{2})$/);
+        if (!startMatch) continue;
+        const date = `${startMatch[1].slice(0, 4)}-${startMatch[1].slice(4, 6)}-${startMatch[1].slice(6, 8)}`;
+        const summary = decodeCalendarText(property('SUMMARY'));
+        const team = summary.match(/^WFH — (.+?) \(Regular\b/)?.[1] || summary || 'WFH';
+        const endMatch = property('DTEND').match(/^\d{8}T(\d{2})(\d{2})(\d{2})$/);
+        const event = {
+          team,
+          title: `WFH · ${team}`,
+          time: endMatch ? `${startMatch[2]}:${startMatch[3]}–${endMatch[1]}:${endMatch[2]}` : `${startMatch[2]}:${startMatch[3]}`,
+          description: decodeCalendarText(property('DESCRIPTION'))
+        };
+        const dayEvents = events.get(date) || [];
+        dayEvents.push(event);
+        events.set(date, dayEvents);
       }
       return events;
     }
@@ -342,17 +490,32 @@
             time.textContent = String(day);
             cell.append(time);
             for (const holiday of calendarHolidays.get(date) || []) {
-              const label = document.createElement('span');
-              label.className = 'calendar-event calendar-holiday';
+              const label = document.createElement('button');
+              label.type = 'button';
+              label.className = 'calendar-event calendar-holiday calendar-event-button';
               const kind = holiday.type === 'collective_leave' ? 'Collective leave' : 'Holiday';
               label.textContent = `${kind}: ${holiday.name}`;
-              label.title = label.textContent;
+              label.setAttribute('aria-label', `${kind}: ${holiday.name}, ${date}. View details`);
+              label.addEventListener('click', () => showEventDetails({
+                title: holiday.name,
+                date,
+                calendar: calendarFeeds.find(feed => feed.file === calendarSelect.value)?.label || 'Calendar',
+                description: holiday.name,
+                type: kind
+              }));
               cell.append(label);
             }
-            for (const team of calendarEvents.get(date) || []) {
-              const event = document.createElement('span');
-              event.className = 'calendar-event';
-              event.textContent = team;
+            for (const calendarEvent of calendarEvents.get(date) || []) {
+              const event = document.createElement('button');
+              event.type = 'button';
+              event.className = 'calendar-event calendar-event-button';
+              event.textContent = calendarEvent.team;
+              event.setAttribute('aria-label', `${calendarEvent.title}, ${date}. View details`);
+              event.addEventListener('click', () => showEventDetails({
+                ...calendarEvent,
+                date,
+                calendar: calendarFeeds.find(feed => feed.file === calendarSelect.value)?.label || 'Calendar'
+              }));
               cell.append(event);
             }
           }
@@ -369,7 +532,22 @@
     async function selectCalendarFeed(file) {
       const feed = calendarFeeds.find(item => item.file === file);
       if (!feed) return;
+      const returnFocus = !calendarFeedOptions.hidden && calendarFeedOptions.contains(document.activeElement);
       calendarSelect.value = feed.file;
+      calendarFeedValue.textContent = feed.label;
+      calendarFeedOptions.querySelectorAll('[role="option"]').forEach(option => {
+        const selected = option.dataset.file === feed.file;
+        option.setAttribute('aria-selected', String(selected));
+        option.replaceChildren(document.createTextNode(option.dataset.label));
+        if (selected) {
+          const check = document.createElement('span');
+          check.className = 'calendar-feed-option-check';
+          check.setAttribute('aria-hidden', 'true');
+          check.textContent = '✓';
+          option.append(check);
+        }
+      });
+      closeCalendarFeedOptions(returnFocus);
       document.querySelectorAll('.preview-feed').forEach(button => {
         const selected = button.dataset.file === feed.file;
         button.setAttribute('aria-pressed', String(selected));
@@ -424,13 +602,25 @@
         calendarHolidays.set(holiday.date, dates);
       }
       calendarSelect.replaceChildren();
+      calendarFeedOptions.replaceChildren();
       for (const item of uniqueEntries) {
         const option = document.createElement('option');
         option.value = item.file;
         option.textContent = item.label;
         calendarSelect.append(option);
+
+        const customOption = document.createElement('div');
+        customOption.className = 'calendar-feed-option';
+        customOption.setAttribute('role', 'option');
+        customOption.setAttribute('aria-selected', 'false');
+        customOption.tabIndex = -1;
+        customOption.dataset.file = item.file;
+        customOption.dataset.label = item.label;
+        customOption.textContent = item.label;
+        calendarFeedOptions.append(customOption);
       }
       calendarSelect.disabled = uniqueEntries.length === 0;
+      calendarFeedTrigger.disabled = uniqueEntries.length === 0;
       previousMonth.disabled = false;
       nextMonth.disabled = false;
       const today = new Date();
@@ -473,6 +663,7 @@
     }).catch(error => {
       $('feeds-list').innerHTML = '<p>Feed index not found yet. Run <code>npm run generate</code> and publish the <code>public/</code> folder.</p>';
       calendarSelect.disabled = true;
+      calendarFeedTrigger.disabled = true;
       calendarState.textContent = 'Calendar preview is unavailable because the feed index could not be loaded.';
       console.error('Calendar feed index failed:', error);
     });
