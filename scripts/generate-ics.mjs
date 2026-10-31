@@ -99,7 +99,7 @@ function foldLine(line) {
     if (Buffer.byteLength(current + char, 'utf8') > 73) { chunks.push(current); current = ` ${char}`; }
     else current += char;
   }
-  chunks.push(current); return chunks.join('\\r\\n');
+  chunks.push(current); return chunks.join('\r\n');
 }
 function timezoneBlock() {
   return ['BEGIN:VTIMEZONE', 'TZID:Asia/Jakarta', 'X-LIC-LOCATION:Asia/Jakarta', 'BEGIN:STANDARD', 'DTSTART:19700101T000000', 'TZOFFSETFROM:+0700', 'TZOFFSETTO:+0700', 'TZNAME:WIB', 'END:STANDARD', 'END:VTIMEZONE'];
@@ -121,7 +121,7 @@ export function makeCalendar(name, events, config) {
       'END:VEVENT');
   }
   lines.push('END:VCALENDAR');
-  return `${lines.map(foldLine).join('\\r\\n')}\\r\\n`;
+  return `${lines.map(foldLine).join('\r\n')}\r\n`;
 }
 
 function getRequestedEndDate(config) {

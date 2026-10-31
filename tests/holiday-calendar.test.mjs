@@ -83,6 +83,10 @@ test('Regular scheme has the expected DTSTART and DTEND', () => {
 });
 test('regular hours remain 08:30–17:30 for every WFH event', () => {
   const ics = makeCalendar('Test', [{ date: '2026-10-12', team: 'Team A' }], {});
+  assert.match(ics, /^BEGIN:VCALENDAR\r\nVERSION:2\.0\r\n/);
+  assert.ok(ics.endsWith('\r\n'));
+  assert.doesNotMatch(ics, /\\r\\n/);
+  assert.equal((ics.match(/\r\n/g) || []).length, (ics.match(/\n/g) || []).length);
   assert.match(ics, /DTSTART;TZID=Asia\/Jakarta:20261012T083000/);
   assert.match(ics, /DTEND;TZID=Asia\/Jakarta:20261012T173000/);
   assert.match(ics, /DESCRIPTION:Your team’s scheduled work-from-home day\./);
@@ -102,8 +106,8 @@ test('event messages vary deterministically by date and team', () => {
     { date: '2026-10-14', team: 'Team C' }
   ];
   const descriptions = calendar => calendar
-    .replaceAll('\\r\\n ', '')
-    .split('\\r\\n')
+    .replaceAll('\r\n ', '')
+    .split('\r\n')
     .filter(line => line.startsWith('DESCRIPTION:'))
     .map(line => line.slice('DESCRIPTION:'.length).replace(/\\,/g, ','));
   const firstGeneration = descriptions(makeCalendar('Test', events, config));
