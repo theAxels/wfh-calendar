@@ -60,10 +60,10 @@ All generated WFH events use the Regular schedule in WIB:
 
 - Clock in: **08:30 WIB**
 - Clock out: **17:30 WIB**
-- Lunch: **12:00–13:00 WIB** (included in the event description; not a separate event)
+- Lunch: **12:00–13:00 WIB** (not a separate event)
 - Timezone: `Asia/Jakarta`
 
-The calendar publishes team-level events, not employee-specific schedules. Holidays and collective leave are skipped without advancing the rotation.
+Each event description also includes a short encouraging message selected from the `eventMessages` templates in `config/wfh.config.json`. Messages use `{team}` for personalization and are selected deterministically from the event date and team, so regenerating the feed does not change a given event's greeting. They are maintained locally and do not depend on an external API. The calendar publishes team-level events, not employee-specific schedules. Holidays and collective leave are skipped without advancing the rotation.
 
 ## Manual overrides
 

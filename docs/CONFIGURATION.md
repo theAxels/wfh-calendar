@@ -16,9 +16,16 @@ Edit `config/wfh.config.json`, then run `npm run generate`.
   "holidayPolicy": "skip-without-advancing",
   "holidaySource": { "mode": "tanggalmerah-api", "baseUrl": "https://tanggalmerah.upset.dev", "timeoutMs": 10000 },
   "holidays": [],
+  "eventMessages": [
+    "Good morning, {team}! Hope your day feels focused and comfortable.",
+    "Your WFH day is here, {team}—settle in and take the day at your own pace.",
+    "Wishing {team} a smooth and balanced work-from-home day."
+  ],
   "description": "Work From Home day."
 }
 ```
+
+`eventMessages` is the local source for WFH event greetings. Add concise, inclusive message templates containing `{team}`; the generator chooses a message deterministically using each event's date and team. No remote service or runtime API is used. Greetings appear only in WFH event descriptions, while the ICS event times remain unchanged.
 
 ## Stable subscription URLs
 

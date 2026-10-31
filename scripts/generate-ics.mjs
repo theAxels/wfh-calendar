@@ -68,9 +68,26 @@ function eventWindow() {
   return {
     start: '08:30',
     end: '17:30',
-    summary: 'Regular 08:30–17:30',
-    description: 'Clock in 08:30 WIB · Clock out 17:30 WIB · Lunch 12:00–13:00 WIB.'
+    summary: 'Regular 08:30–17:30'
   };
+}
+const DEFAULT_EVENT_MESSAGES = ['Your team’s scheduled work-from-home day.'];
+function getEventMessages(config) {
+  const messages = config.eventMessages ?? DEFAULT_EVENT_MESSAGES;
+  assert(Array.isArray(messages) && messages.length > 0, 'eventMessages must be a non-empty array.');
+  assert(messages.every(message => typeof message === 'string' && message.trim()), 'Each eventMessages entry must be a non-empty string.');
+  if (config.eventMessages) {
+    assert(messages.every(message => message.includes('{team}')), 'Each configured eventMessages entry must contain {team}.');
+  }
+  return messages;
+}
+function selectEventMessage(event, messages) {
+  let hash = 2166136261;
+  for (const character of `${event.date}|${event.team}`) {
+    hash ^= character.charCodeAt(0);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+  return messages[hash % messages.length].replaceAll('{team}', event.team);
 }
 function escapeText(value) {
   return String(value ?? '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
@@ -89,6 +106,7 @@ function timezoneBlock() {
 }
 
 export function makeCalendar(name, events, config) {
+  const eventMessages = getEventMessages(config);
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//theAxels//wfh-calendar//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', `X-WR-CALNAME:${escapeText(name)}`, `X-WR-TIMEZONE:${TZID}`, ...timezoneBlock()];
   for (const event of events) {
     const window = eventWindow();
@@ -98,7 +116,7 @@ export function makeCalendar(name, events, config) {
       `DTSTART;TZID=${TZID}:${localDateTime(event.date, window.start)}`,
       `DTEND;TZID=${TZID}:${localDateTime(event.date, window.end)}`,
       `SUMMARY:${escapeText(`WFH — ${event.team} (${window.summary})`)}`,
-      `DESCRIPTION:${escapeText(`${window.description} Team: ${event.team}. Holiday dates are skipped without advancing the team rotation.`)}`,
+      `DESCRIPTION:${escapeText(selectEventMessage(event, eventMessages))}`,
       `CATEGORIES:${escapeText(event.team)},WFH`,
       'END:VEVENT');
   }
@@ -128,6 +146,7 @@ export async function generateIcs(configPathOverride, outputDirOverride, rootDir
   assert(config.rotationOrder.includes(config.startTeam), 'startTeam must be in rotationOrder.');
   assert(isIsoDate(config.startDate), 'startDate must be a valid YYYY-MM-DD date.');
   assert(Array.isArray(config.eligibleWeekdays) && config.eligibleWeekdays.every(day => Number.isInteger(day) && day >= 0 && day <= 6), 'eligibleWeekdays must contain weekday numbers.');
+  getEventMessages(config);
 
   const { years: holidayYears, holidays: holidayMap } = loadHolidayData(rootDir);
   const startYear = Number(config.startDate.slice(0, 4));

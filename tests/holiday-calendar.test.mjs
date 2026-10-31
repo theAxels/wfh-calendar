@@ -85,7 +85,42 @@ test('regular hours remain 08:30–17:30 for every WFH event', () => {
   const ics = makeCalendar('Test', [{ date: '2026-10-12', team: 'Team A' }], {});
   assert.match(ics, /DTSTART;TZID=Asia\/Jakarta:20261012T083000/);
   assert.match(ics, /DTEND;TZID=Asia\/Jakarta:20261012T173000/);
-  assert.match(ics, /Clock in 08:30 WIB · Clock out 17:30 WIB/);
+  assert.match(ics, /DESCRIPTION:Your team’s scheduled work-from-home day\./);
+  assert.doesNotMatch(ics, /Clock in|Clock out|Lunch/);
+});
+test('event messages vary deterministically by date and team', () => {
+  const config = {
+    eventMessages: [
+      'Good morning, {team}! Hope your day feels focused and comfortable.',
+      'Your WFH day is here, {team}—settle in and take the day at your own pace.',
+      'Wishing {team} a smooth and balanced work-from-home day.'
+    ]
+  };
+  const events = [
+    { date: '2026-10-12', team: 'Team A' },
+    { date: '2026-10-13', team: 'Team B' },
+    { date: '2026-10-14', team: 'Team C' }
+  ];
+  const descriptions = calendar => calendar
+    .replaceAll('\\r\\n ', '')
+    .split('\\r\\n')
+    .filter(line => line.startsWith('DESCRIPTION:'))
+    .map(line => line.slice('DESCRIPTION:'.length).replace(/\\,/g, ','));
+  const firstGeneration = descriptions(makeCalendar('Test', events, config));
+  const secondGeneration = descriptions(makeCalendar('Test', events, config));
+  assert.deepEqual(firstGeneration, secondGeneration);
+  assert.equal(firstGeneration.length, events.length);
+  assert.ok(firstGeneration.some(line => line.includes('Good morning, Team A!') || line.includes('Good morning, Team B!') || line.includes('Good morning, Team C!')));
+  assert.ok(firstGeneration.some(line => line.includes('Team A')));
+  assert.ok(firstGeneration.some(line => line.includes('Team B')));
+  assert.ok(firstGeneration.some(line => line.includes('Team C')));
+  assert.doesNotMatch(firstGeneration.join('\n'), /08:30|17:30|12:00|13:00/);
+});
+test('event message templates must include the team placeholder', () => {
+  assert.throws(
+    () => makeCalendar('Test', [{ date: '2026-10-12', team: 'Team A' }], { eventMessages: ['Have a great day!'] }),
+    /must contain \{team\}/
+  );
 });
 test('every calendar includes Asia/Jakarta VTIMEZONE and fixed UTC+7 offset', () => {
   const ics = makeCalendar('Test', [], {});

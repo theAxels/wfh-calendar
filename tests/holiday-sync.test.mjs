@@ -50,7 +50,7 @@ test('Calendar generation includes VTIMEZONE and correct regular window', () => 
 test('All team events use Regular working hours', () => {
   const calendar = makeCalendar('WFH Calendar', [{ date: '2026-10-09', team: 'Team C' }], { timezone: 'Asia/Jakarta' }, 'flexi');
   assert.match(calendar, /DTEND;TZID=Asia\/Jakarta:20261009T173000/);
-  assert.match(calendar, /Clock in 08:30 WIB/);
+  assert.match(calendar, /DESCRIPTION:Your team’s scheduled work-from-home day\./);
 });
 
 test('generateIcs creates the stable feed files', async () => {

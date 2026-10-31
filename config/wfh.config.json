@@ -33,5 +33,10 @@
   "holidays": [],
   "eventStartTime": "08:30",
   "eventEndTime": "17:30",
+  "eventMessages": [
+    "Good morning, {team}! Hope your day feels focused and comfortable.",
+    "Your WFH day is here, {team}—settle in and take the day at your own pace.",
+    "Wishing {team} a smooth and balanced work-from-home day."
+  ],
   "description": "Work From Home day. Indonesian national holidays and collective leave are skipped using Tanggal Merah API data."
 }
