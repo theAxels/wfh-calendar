@@ -1,23 +1,23 @@
 {
   "calendarName": "WFH Calendar",
-  "generatedAt": "2026-11-02T14:56:37.871Z",
+  "generatedAt": "2026-11-03T12:46:16.773Z",
   "startDate": "2026-10-09",
   "endDate": "2027-12-31",
   "requestedEndDate": "2031-12-31",
   "timezone": "Asia/Jakarta",
-  "totalEvents": 301,
+  "totalEvents": 300,
   "stable": {
     "combinedFile": "all.ics",
     "teams": [
       {
         "team": "All teams",
         "file": "all.ics",
-        "events": 301
+        "events": 300
       },
       {
         "team": "Team A",
         "file": "team-a.ics",
-        "events": 76
+        "events": 75
       },
       {
         "team": "Team B",
@@ -42,12 +42,12 @@
     {
       "team": "All teams",
       "file": "all.ics",
-      "events": 301
+      "events": 300
     },
     {
       "team": "Team A",
       "file": "team-a.ics",
-      "events": 76
+      "events": 75
     },
     {
       "team": "Team B",
@@ -67,8 +67,13 @@
   ],
   "holidays": [
     {
+      "date": "2026-12-24",
+      "name": "Hari Raya Natal",
+      "type": "collective_leave"
+    },
+    {
       "date": "2026-12-25",
-      "name": "Natal",
+      "name": "Hari Raya Natal",
       "type": "national"
     },
     {
@@ -207,8 +212,8 @@
     "coveredThrough": "2027-12-31",
     "latestVerifiedDate": "2027-12-31",
     "capped": true,
-    "lastCheck": "2026-11-02T14:56:37.523Z",
-    "lastSuccess": "2026-11-02T14:56:37.523Z",
+    "lastCheck": "2026-11-03T12:46:16.103Z",
+    "lastSuccess": "2026-11-03T12:46:16.103Z",
     "availableYears": [
       2023,
       2024,

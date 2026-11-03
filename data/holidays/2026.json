@@ -1,34 +1,71 @@
 {
   "source": "https://tanggalmerah.upset.dev/api/holidays?year=2026",
-  "fetchedAt": "2026-10-10T00:00:00.000Z",
+  "fetchedAt": "2026-11-03T12:46:16.103Z",
   "year": 2026,
   "holidays": [
     {
       "date": "2026-01-01",
-      "name": "Tahun Baru 2026",
+      "name": "Tahun Baru 2026 Masehi",
       "type": "national"
     },
     {
-      "date": "2026-02-07",
-      "name": "Isra Mi'raj (override)",
-      "type": "national",
-      "source": "https://www.kemenag.go.id/",
-      "verifiedBy": "Indonesian government calendar notice",
-      "verifiedAt": "2026-10-10T00:00:00.000Z"
+      "date": "2026-01-16",
+      "name": "Isra Mi'raj Nabi Muhammad SAW",
+      "type": "national"
     },
     {
-      "date": "2026-03-17",
-      "name": "Hari Raya Nyepi",
+      "date": "2026-02-16",
+      "name": "Tahun Baru Imlek 2577 Kongzili",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Tahun Baru Imlek 2577 Kongzili",
+      "type": "national"
+    },
+    {
+      "date": "2026-03-18",
+      "name": "Hari Suci Nyepi Tahun Baru Saka 1948",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2026-03-19",
+      "name": "Hari Suci Nyepi Tahun Baru Saka 1948",
       "type": "national"
     },
     {
       "date": "2026-03-20",
-      "name": "Cuti Bersama 2026",
+      "name": "Hari Raya Idul Fitri 1447 Hijriyah",
       "type": "collective_leave"
     },
     {
-      "date": "2026-04-01",
-      "name": "Jumat Agung",
+      "date": "2026-03-21",
+      "name": "Hari Raya Idul Fitri 1447 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2026-03-22",
+      "name": "Hari Raya Idul Fitri 1447 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2026-03-23",
+      "name": "Hari Raya Idul Fitri 1447 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2026-03-24",
+      "name": "Hari Raya Idul Fitri 1447 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Wafat Yesus Kristus / Jumat Agung",
+      "type": "national"
+    },
+    {
+      "date": "2026-04-05",
+      "name": "Kebangkitan Yesus Kristus (Paskah)",
       "type": "national"
     },
     {
@@ -38,7 +75,27 @@
     },
     {
       "date": "2026-05-14",
-      "name": "Kenaikan Isa Almasih",
+      "name": "Kenaikan Yesus Kristus",
+      "type": "national"
+    },
+    {
+      "date": "2026-05-15",
+      "name": "Kenaikan Yesus Kristus",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2026-05-27",
+      "name": "Hari Raya Idul Adha 1447 Hijriyah",
+      "type": "national"
+    },
+    {
+      "date": "2026-05-28",
+      "name": "Hari Raya Idul Adha 1447 Hijriyah",
+      "type": "collective_leave"
+    },
+    {
+      "date": "2026-05-31",
+      "name": "Hari Raya Waisak 2570 BE",
       "type": "national"
     },
     {
@@ -47,28 +104,28 @@
       "type": "national"
     },
     {
-      "date": "2026-06-26",
-      "name": "Idul Adha",
-      "type": "national"
-    },
-    {
-      "date": "2026-07-17",
-      "name": "Tahun Baru Islam 1448 Hijriah",
+      "date": "2026-06-16",
+      "name": "Tahun Baru Islam 1448 Hijriyah",
       "type": "national"
     },
     {
       "date": "2026-08-17",
-      "name": "Hari Kemerdekaan Indonesia",
+      "name": "Hari Kemerdekaan Republik Indonesia",
       "type": "national"
     },
     {
-      "date": "2026-09-25",
+      "date": "2026-08-25",
       "name": "Maulid Nabi Muhammad SAW",
       "type": "national"
     },
     {
+      "date": "2026-12-24",
+      "name": "Hari Raya Natal",
+      "type": "collective_leave"
+    },
+    {
       "date": "2026-12-25",
-      "name": "Natal",
+      "name": "Hari Raya Natal",
       "type": "national"
     }
   ]
