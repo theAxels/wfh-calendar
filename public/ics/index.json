@@ -1,6 +1,6 @@
 {
   "calendarName": "WFH Calendar",
-  "generatedAt": "2026-11-03T12:46:16.773Z",
+  "generatedAt": "2026-11-09T15:25:53.447Z",
   "startDate": "2026-10-09",
   "endDate": "2027-12-31",
   "requestedEndDate": "2031-12-31",
@@ -212,8 +212,8 @@
     "coveredThrough": "2027-12-31",
     "latestVerifiedDate": "2027-12-31",
     "capped": true,
-    "lastCheck": "2026-11-03T12:46:16.103Z",
-    "lastSuccess": "2026-11-03T12:46:16.103Z",
+    "lastCheck": "2026-11-09T15:25:52.981Z",
+    "lastSuccess": "2026-11-09T15:25:52.981Z",
     "availableYears": [
       2023,
       2024,
